@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '642305334541555');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=642305334541555&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+<title>HÍBRIDO · Selecione o seu nível | Intensive Performance</title>
+<meta name="description" content="Você escolheu o programa HÍBRIDO. Selecione o seu nível — iniciante, intermediário ou avançado — e treine na academia e em casa, de onde der no dia. Pagamento único." />
+
+<!-- Open Graph -->
+<meta property="og:title" content="HÍBRIDO · Selecione o seu nível | Intensive Performance" />
+<meta property="og:description" content="Treino físico para tenistas na academia e em casa. Escolha o seu nível e comece. Pagamento único, não é mensalidade." />
+<meta property="og:type" content="website" />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+/* ============================================================
+   TOKENS  (mesmo sistema da página de vendas)
+============================================================ */
+:root{
+  --ink:#0A0A07;
+  --ink-2:#101009;
+  --card:#15150D;
+  --olive:#3D3D07;
+  --olive-2:#272706;
+  --gold:#C8F135;
+  --gold-2:#DBF877;
+  --gold-deep:#8FB81F;
+  --cream:#F6F3E7;
+  --text:#C9C7B6;
+  --muted:#86846F;
+  --line:rgba(200,241,53,.14);
+  --line-soft:rgba(246,243,231,.08);
+  --shadow:0 30px 80px -30px rgba(0,0,0,.8);
+  --r:18px;
+  --maxw:1180px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--ink);color:var(--text);
+  font-family:"Karla",system-ui,sans-serif;font-size:17px;line-height:1.6;
+  overflow-x:hidden;-webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{font-family:"Clash Display",sans-serif;color:var(--cream);line-height:1.04;letter-spacing:-.01em;font-weight:600}
+.gold{color:var(--gold)}
+::selection{background:var(--gold);color:#000}
+
+/* LAYOUT HELPERS */
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.eyebrow{
+  font-family:"Karla",sans-serif;font-weight:700;font-size:13px;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--gold);
+  display:inline-flex;align-items:center;gap:10px;
+}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--gold);opacity:.7}
+.section{padding:110px 0;position:relative}
+
+/* BUTTONS */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-family:"Karla",sans-serif;font-weight:700;font-size:15px;
+  letter-spacing:.02em;padding:16px 28px;border-radius:100px;
+  cursor:pointer;border:none;transition:transform .25s ease,box-shadow .25s ease,background .25s ease;
+  text-transform:uppercase;
+}
+.btn-primary{
+  background:linear-gradient(135deg,var(--gold-2),var(--gold) 55%,var(--gold-deep));
+  color:#15130A;box-shadow:0 14px 36px -12px rgba(200,241,53,.6),inset 0 1px 0 rgba(255,255,255,.4);
+}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 22px 48px -14px rgba(200,241,53,.75),inset 0 1px 0 rgba(255,255,255,.5)}
+.btn svg{width:18px;height:18px}
+
+/* HEADER */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  transition:background .3s ease,backdrop-filter .3s ease,border-color .3s ease;
+  border-bottom:1px solid transparent;
+}
+header.scrolled{background:rgba(10,10,7,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:78px}
+.logo{display:flex;align-items:center;gap:11px;font-family:"Clash Display";font-weight:600;font-size:19px;color:var(--cream);letter-spacing:.01em}
+.logo-img{height:38px;width:auto;display:block}
+.logo-fallback{flex-direction:column;line-height:1.05}
+.logo small{display:block;font-family:"Karla";font-weight:700;font-size:9px;letter-spacing:.28em;color:var(--gold);text-transform:uppercase;margin-top:-2px}
+.nav .back{font-size:13.5px;font-weight:600;color:var(--text);display:inline-flex;align-items:center;gap:7px;transition:color .2s}
+.nav .back:hover{color:var(--gold)}
+.nav .back svg{width:16px;height:16px}
+
+/* HERO / INTRO */
+.intro{position:relative;overflow:hidden;padding:150px 0 60px;
+  background:
+    radial-gradient(120% 80% at 80% 0%,rgba(200,241,53,.12),transparent 55%),
+    radial-gradient(70% 60% at 8% 4%,rgba(61,61,7,.5),transparent 60%),
+    linear-gradient(180deg,var(--ink-2),var(--ink));}
+.court-lines{position:absolute;inset:0;z-index:0;opacity:.07;pointer-events:none}
+.intro .wrap{position:relative;z-index:1;text-align:center;max-width:760px}
+.chosen{display:inline-flex;align-items:center;gap:10px;background:rgba(200,241,53,.1);border:1px solid var(--line);color:var(--gold);font-family:"Clash Display";font-weight:600;font-size:14px;padding:9px 16px;border-radius:100px;margin-bottom:22px}
+.chosen svg{width:16px;height:16px}
+.intro h1{font-size:clamp(36px,6.4vw,60px);font-weight:600;color:var(--cream);margin-bottom:18px}
+.intro p{color:var(--muted);font-size:18px;max-width:560px;margin:0 auto}
+
+/* LEVELS GRID */
+.levels{padding:0 0 96px;position:relative;
+  background:radial-gradient(60% 50% at 50% 100%,rgba(200,241,53,.05),transparent 60%),var(--ink);}
+.levels-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1080px;margin:0 auto;align-items:stretch}
+.lvl-card{position:relative;display:flex;flex-direction:column;
+  background:linear-gradient(165deg,rgba(21,21,13,.95),rgba(10,10,7,.9));
+  border:1px solid var(--line-soft);border-radius:24px;padding:34px 30px;
+  transition:border-color .3s,transform .3s;overflow:hidden}
+.lvl-card:hover{transform:translateY(-6px);border-color:rgba(200,241,53,.4)}
+.lvl-tag{display:inline-flex;align-self:flex-start;align-items:center;gap:8px;font-family:"Karla";font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.lvl-tag .dots{display:flex;gap:4px}
+.lvl-tag .dots i{width:7px;height:7px;border-radius:50%;background:var(--gold);display:block}
+.lvl-tag .dots i.off{background:rgba(200,241,53,.22)}
+.lvl-card h2{font-size:27px;margin-bottom:10px}
+.lvl-card .who{color:var(--muted);font-size:14.5px;margin-bottom:22px;min-height:63px}
+.lvl-price{border-top:1px solid var(--line-soft);padding-top:20px;margin-top:auto}
+.lvl-price .from{font-size:13px;color:var(--muted)}
+.lvl-price .from s{opacity:.8}
+.lvl-amount{display:flex;align-items:flex-end;gap:6px;margin:2px 0 4px}
+.lvl-amount .cur{font-family:"Clash Display";font-size:18px;color:var(--cream);font-weight:500;margin-bottom:6px}
+.lvl-amount .num{font-family:"Clash Display";font-size:46px;color:var(--cream);font-weight:600;line-height:.9;letter-spacing:-.02em}
+.lvl-inst{font-size:13.5px;color:var(--text)}
+.lvl-inst b{color:var(--cream);font-weight:600}
+.lvl-note{font-size:12px;color:var(--gold-deep);font-weight:600;margin-top:6px}
+.lvl-card .btn{width:100%;margin-top:22px;font-size:15px;padding:17px}
+
+/* SECURE STRIP */
+.secure{display:flex;align-items:center;justify-content:center;gap:22px;margin-top:36px;flex-wrap:wrap}
+.secure span{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted)}
+.secure svg{width:16px;height:16px;color:var(--gold)}
+
+/* FAQ */
+.faq{position:relative;overflow:hidden;
+  background:
+    radial-gradient(52% 62% at 0% 100%,rgba(61,61,7,.45),transparent 60%),
+    radial-gradient(40% 44% at 100% 4%,rgba(200,241,53,.05),transparent 60%),
+    var(--ink-2);}
+.faq-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:56px;align-items:start}
+.faq-head h2{font-size:clamp(30px,4vw,46px);margin-top:16px}
+.faq-head p{color:var(--muted);margin-top:16px}
+.faq-list{display:grid;gap:14px}
+.faq-item{background:var(--card);border:1px solid var(--line-soft);border-radius:16px;overflow:hidden;transition:border-color .3s}
+.faq-item.open{border-color:rgba(200,241,53,.35)}
+.faq-q{width:100%;background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:24px 26px;text-align:left;font-family:"Clash Display";font-size:18px;color:var(--cream);font-weight:500}
+.faq-q .ic{width:30px;height:30px;border-radius:9px;background:rgba(200,241,53,.1);display:grid;place-items:center;flex-shrink:0;transition:transform .3s,background .3s}
+.faq-q .ic svg{width:16px;height:16px;color:var(--gold);transition:transform .3s}
+.faq-item.open .ic{background:var(--gold)}
+.faq-item.open .ic svg{color:#15130A;transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.faq-a p{padding:0 26px 26px;color:var(--muted);font-size:15.5px}
+
+/* FOOTER */
+footer{background:var(--ink-2);border-top:1px solid var(--line-soft);padding:54px 0 34px}
+.foot-grid{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap;padding-bottom:34px;border-bottom:1px solid var(--line-soft)}
+.foot-brand{max-width:320px}
+.foot-brand p{font-size:14px;color:var(--muted);margin-top:16px}
+.foot-social{display:flex;gap:12px}
+.foot-social a{width:40px;height:40px;border-radius:11px;border:1px solid var(--line);display:grid;place-items:center;color:var(--text);transition:all .25s}
+.foot-social a:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-3px)}
+.foot-social svg{width:18px;height:18px}
+.foot-bottom{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding-top:24px}
+.foot-bottom p{font-size:13px;color:var(--muted)}
+
+/* SEAM */
+.faq::before,.levels::before{
+  content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:min(900px,84%);height:1px;z-index:4;pointer-events:none;
+  background:linear-gradient(90deg,transparent,rgba(200,241,53,.5),transparent);
+}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* RESPONSIVE */
+@media(max-width:980px){
+  .section{padding:90px 0}
+  .levels-grid{grid-template-columns:1fr;max-width:460px}
+  .lvl-card .who{min-height:0}
+  .faq-grid{grid-template-columns:1fr;gap:32px}
+}
+@media(max-width:560px){
+  body{font-size:16px}
+  .wrap{padding:0 18px}
+  .intro{padding:128px 0 48px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================ HEADER ============================================================ -->
+<header id="header">
+  <div class="wrap nav">
+    <a href="https://intensiveperformance.com/" class="logo" aria-label="Intensive Performance">
+      <img class="logo-img" src="https://intensiveperformance.com/wp-content/uploads/2026/06/logo-white-yellow.png" alt="Intensive Performance" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <span class="logo-fallback" style="display:none">Intensive<small>Performance</small></span>
+    </a>
+    <a href="https://intensiveperformance.com/" class="back">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M19 12H5M11 6l-6 6 6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Voltar
+    </a>
+  </div>
+</header>
+
+<!-- ============================================================ INTRO ============================================================ -->
+<section class="intro">
+  <svg class="court-lines" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" fill="none">
+    <rect x="120" y="80" width="960" height="640" stroke="#C8F135" stroke-width="2"/>
+    <line x1="600" y1="80" x2="600" y2="720" stroke="#C8F135" stroke-width="2"/>
+    <line x1="120" y1="400" x2="1080" y2="400" stroke="#C8F135" stroke-width="2"/>
+    <rect x="300" y="220" width="600" height="360" stroke="#C8F135" stroke-width="2"/>
+  </svg>
+  <div class="wrap">
+    <span class="chosen">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Você escolheu o programa HÍBRIDO
+    </span>
+    <h1>Selecione o seu <span class="gold">nível.</span></h1>
+    <p>Escolha o nível que combina com o seu momento. O treino vem pronto pra academia e pra casa: você treina de onde der no dia, tudo detalhado no aplicativo.</p>
+  </div>
+</section>
+
+<!-- ============================================================ NÍVEIS ============================================================ -->
+<section class="levels">
+  <div class="wrap">
+    <div class="levels-grid">
+
+      <!-- INICIANTE -->
+      <div class="lvl-card reveal">
+        <span class="lvl-tag"><span class="dots"><i></i><i class="off"></i><i class="off"></i></span> Iniciante</span>
+        <h2>Iniciante</h2>
+        <p class="who">Se você começou agora ou recentemente a fazer exercício físico.</p>
+        <div class="lvl-price">
+          <div class="from">De <s>R$ 369,80</s></div>
+          <div class="lvl-amount"><span class="cur">R$</span><span class="num">264,90</span></div>
+          <div class="lvl-inst">à vista <b>ou 11x de R$ 29,90</b></div>
+          <div class="lvl-note">Pagamento único · não é mensalidade</div>
+        </div>
+        <!-- CHECKOUT: troque o href pela URL do checkout Stripe — HÍBRIDO Iniciante -->
+        <a href="https://www.clubeintensiveperformance.com/comprar/hibrido-iniciante" id="cta-checkout" class="btn btn-primary nivel-cta" data-plan="HIBRIDO" data-level="Iniciante" data-value="264.90">
+          COMPRAR AGORA
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <!-- INTERMEDIÁRIO -->
+      <div class="lvl-card reveal">
+        <span class="lvl-tag"><span class="dots"><i></i><i></i><i class="off"></i></span> Intermediário</span>
+        <h2>Intermediário</h2>
+        <p class="who">Se já treina há mais de 1 ano e agora busca um treino funcional pro tênis, moderado a intenso.</p>
+        <div class="lvl-price">
+          <div class="from">De <s>R$ 369,80</s></div>
+          <div class="lvl-amount"><span class="cur">R$</span><span class="num">264,90</span></div>
+          <div class="lvl-inst">à vista <b>ou 11x de R$ 29,90</b></div>
+          <div class="lvl-note">Pagamento único · não é mensalidade</div>
+        </div>
+        <!-- CHECKOUT: troque o href pela URL do checkout Stripe — HÍBRIDO Intermediário -->
+        <a href="https://www.clubeintensiveperformance.com/comprar/hibrido-intermediario" id="cta-checkout" class="btn btn-primary nivel-cta" data-plan="HIBRIDO" data-level="Intermediario" data-value="264.90">
+          COMPRAR AGORA
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <!-- AVANÇADO -->
+      <div class="lvl-card reveal">
+        <span class="lvl-tag"><span class="dots"><i></i><i></i><i></i></span> Avançado</span>
+        <h2>Avançado</h2>
+        <p class="who">Pra você que já faz treino funcional intenso e está acostumado com treinos difíceis.</p>
+        <div class="lvl-price">
+          <div class="from">De <s>R$ 369,80</s></div>
+          <div class="lvl-amount"><span class="cur">R$</span><span class="num">264,90</span></div>
+          <div class="lvl-inst">à vista <b>ou 11x de R$ 29,90</b></div>
+          <div class="lvl-note">Pagamento único · não é mensalidade</div>
+        </div>
+        <!-- CHECKOUT: troque o href pela URL do checkout Stripe — HÍBRIDO Avançado -->
+        <a href="https://www.clubeintensiveperformance.com/comprar/hibrido-avancado" id="cta-checkout" class="btn btn-primary nivel-cta" data-plan="HIBRIDO" data-level="Avancado" data-value="264.90">
+          COMPRAR AGORA
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+    </div>
+
+    <div class="secure">
+      <span><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="10" width="14" height="10" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 10V7a4 4 0 018 0v3" stroke="currentColor" stroke-width="2"/></svg> Pagamento seguro</span>
+      <span><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Acesso imediato</span>
+      <span><svg viewBox="0 0 24 24" fill="none"><path d="M4 7l8 5 8-5M4 7v10h16V7M4 7l8-4 8 4" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg> Pagamento único, sem mensalidade</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ FAQ ============================================================ -->
+<section class="section faq" id="faq">
+  <div class="wrap faq-grid">
+    <div class="faq-head reveal">
+      <span class="eyebrow">Ainda tem dúvida?</span>
+      <h2>Perguntas<br>frequentes.</h2>
+      <p>Se ficar qualquer coisa, é só chamar no Instagram.</p>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-q">Por onde terei acesso aos treinos?<span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span></button>
+        <div class="faq-a"><p>Pelo aplicativo Intensive Performance. Cada exercício é demonstrado em vídeo, com séries e repetições indicadas, tudo detalhado dentro do app.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Por quanto tempo terei acesso?<span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span></button>
+        <div class="faq-a"><p>Você tem 1 ano de acesso ao seu treinamento, contado a partir da compra.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">O que vem nesse treinamento?<span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span></button>
+        <div class="faq-a"><p>São 10 semanas de treino físico, com exercícios de força, agilidade, equilíbrio, reação e outras capacidades, todas específicas pro tênis. O nível que você escolhe ajusta a dificuldade.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Posso treinar em casa ou só na academia?<span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span></button>
+        <div class="faq-a"><p>O Híbrido junta os dois: você recebe os treinos pra academia e pra casa (com elásticos e peso corporal) e escolhe onde treinar a cada dia. Se quiser só um ambiente, tem o GYM (academia) e o HOME (casa) separados.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">É pagamento único ou tem mensalidade?<span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span></button>
+        <div class="faq-a"><p>É pagamento único, sem mensalidade. Você compra uma vez e o acesso fica liberado no app na hora da confirmação do pagamento.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ FOOTER ============================================================ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="https://intensiveperformance.com/" class="logo" aria-label="Intensive Performance">
+          <img class="logo-img" src="https://intensiveperformance.com/wp-content/uploads/2026/06/logo-white-yellow.png" alt="Intensive Performance" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <span class="logo-fallback" style="display:none">Intensive<small>Performance</small></span>
+        </a>
+        <p>Preparação física específica para tenistas. Treino de alto rendimento, no seu ritmo, onde você estiver.</p>
+      </div>
+      <div class="foot-social">
+        <a href="https://www.instagram.com/almeida_treinador/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+        <a href="https://wa.me/15557443243" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none"><path d="M4 20l1.5-4A8 8 0 1112 20a8 8 0 01-4.5-1.4L4 20z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>© <span id="yr"></span> Intensive Performance · Todos os direitos reservados</p>
+      <p><a href="https://intensiveperformance.com/politica-de-privacidade/" style="color:var(--muted)">Política de Privacidade</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* header on scroll */
+const header=document.getElementById('header');
+const onScroll=()=>header.classList.toggle('scrolled',window.scrollY>30);
+onScroll();window.addEventListener('scroll',onScroll,{passive:true});
+
+/* ano no rodapé */
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+/* FAQ accordion */
+document.querySelectorAll('.faq-item').forEach(item=>{
+  const q=item.querySelector('.faq-q');
+  const a=item.querySelector('.faq-a');
+  q.addEventListener('click',()=>{
+    const open=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-a').style.maxHeight=null;});
+    if(!open){item.classList.add('open');a.style.maxHeight=a.scrollHeight+'px';}
+  });
+});
+
+/* reveal on scroll */
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%3*0.06)+'s';io.observe(el);});
+
+/* ============================================================
+   META PIXEL — InitiateCheckout por nível (COMPRA ÚNICA)
+   Cole o fbq init no <head>. Na página de sucesso do Stripe,
+   dispare Purchase reusando o MESMO eventID (dedup com a CAPI).
+============================================================ */
+function genEventId(){return 'ip-'+Date.now()+'-'+Math.random().toString(16).slice(2,8);}
+document.querySelectorAll('.nivel-cta').forEach(function(btn){
+  btn.addEventListener('click',function(e){
+    const eventId=genEventId();
+    const value=parseFloat(btn.getAttribute('data-value'))||0;
+    const plan=btn.getAttribute('data-plan')||'HIBRIDO';
+    const level=btn.getAttribute('data-level')||'';
+    const name=(plan+' '+level).trim();
+    if(typeof fbq==='function'){
+      fbq('track','InitiateCheckout',{value:value,currency:'BRL',content_name:name,content_type:'product'},{eventID:eventId});
+    }
+    try{
+      sessionStorage.setItem('ip_event_id',eventId);
+      sessionStorage.setItem('ip_value',value);
+      sessionStorage.setItem('ip_plan',name);
+    }catch(err){}
+    // e.preventDefault(); // descomente se quiser disparar antes de redirecionar
+  });
+});
+/* Página de sucesso do Stripe:
+   fbq('track','Purchase',{
+     value: parseFloat(sessionStorage.getItem('ip_value'))||0,
+     currency:'BRL', content_name: sessionStorage.getItem('ip_plan'), content_type:'product'
+   },{eventID: sessionStorage.getItem('ip_event_id')}); */
+</script>
+</body>
+</html>

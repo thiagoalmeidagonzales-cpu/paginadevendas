@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '642305334541555');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=642305334541555&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+<title>Intensive Performance | Preparação física específica para tenistas</title>
+<meta name="description" content="Treino físico criado para tenistas. Programas para academia, casa ou híbrido, organizados por nível, no aplicativo. Compra única, acesso imediato." />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Intensive Performance | Treino físico de tenista" />
+<meta property="og:description" content="Treino físico para tenistas: escolha academia, casa ou híbrido e o seu nível. Tudo detalhado no aplicativo, com compra única." />
+<meta property="og:type" content="website" />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+/* ============================================================
+   TOKENS
+============================================================ */
+:root{
+  --ink:#0A0A07;
+  --ink-2:#101009;
+  --card:#15150D;
+  --olive:#3D3D07;
+  --olive-2:#272706;
+  --gold:#C8F135;
+  --gold-2:#DBF877;
+  --gold-deep:#8FB81F;
+  --cream:#F6F3E7;
+  --text:#C9C7B6;
+  --muted:#86846F;
+  --line:rgba(200,241,53,.14);
+  --line-soft:rgba(246,243,231,.08);
+  --shadow:0 30px 80px -30px rgba(0,0,0,.8);
+  --r:18px;
+  --maxw:1180px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--ink);
+  color:var(--text);
+  font-family:"Karla",system-ui,sans-serif;
+  font-size:17px;
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{font-family:"Clash Display",sans-serif;color:var(--cream);line-height:1.04;letter-spacing:-.01em;font-weight:600}
+.gold{color:var(--gold)}
+::selection{background:var(--gold);color:#000}
+
+/* ============================================================
+   LAYOUT HELPERS
+============================================================ */
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.eyebrow{
+  font-family:"Karla",sans-serif;font-weight:700;font-size:13px;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--gold);
+  display:inline-flex;align-items:center;gap:10px;
+}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--gold);opacity:.7}
+.section{padding:120px 0;position:relative}
+.lead{color:var(--muted);font-size:18px;max-width:560px}
+
+/* ============================================================
+   BUTTONS
+============================================================ */
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:"Karla",sans-serif;font-weight:700;font-size:15px;
+  letter-spacing:.02em;padding:16px 28px;border-radius:100px;
+  cursor:pointer;border:none;transition:transform .25s ease,box-shadow .25s ease,background .25s ease;
+  text-transform:uppercase;
+}
+.btn-primary{
+  background:linear-gradient(135deg,var(--gold-2),var(--gold) 55%,var(--gold-deep));
+  color:#15130A;box-shadow:0 14px 36px -12px rgba(200,241,53,.6),inset 0 1px 0 rgba(255,255,255,.4);
+}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 22px 48px -14px rgba(200,241,53,.75),inset 0 1px 0 rgba(255,255,255,.5)}
+.btn-ghost{background:rgba(246,243,231,.04);color:var(--cream);border:1px solid var(--line)}
+.btn-ghost:hover{background:rgba(246,243,231,.08);border-color:var(--gold)}
+.btn svg{width:18px;height:18px}
+
+/* ============================================================
+   HEADER
+============================================================ */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  transition:background .3s ease,backdrop-filter .3s ease,border-color .3s ease;
+  border-bottom:1px solid transparent;
+}
+header.scrolled{
+  background:rgba(10,10,7,.82);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.nav{display:flex;align-items:center;justify-content:space-between;height:78px}
+.logo{display:flex;align-items:center;gap:11px;font-family:"Clash Display";font-weight:600;font-size:19px;color:var(--cream);letter-spacing:.01em}
+.logo-img{height:38px;width:auto;display:block}
+.logo-fallback{flex-direction:column;line-height:1.05}
+.logo .mark{
+  width:34px;height:34px;border-radius:9px;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--gold-2),var(--gold-deep));
+}
+.logo .mark svg{width:18px;height:18px}
+.logo small{display:block;font-family:"Karla";font-weight:700;font-size:9px;letter-spacing:.28em;color:var(--gold);text-transform:uppercase;margin-top:-2px}
+.nav-links{display:flex;align-items:center;gap:34px}
+.nav-links a{font-size:14.5px;font-weight:500;color:var(--text);transition:color .2s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{display:flex;align-items:center;gap:14px}
+.burger{display:none;background:none;border:none;cursor:pointer;width:42px;height:42px;color:var(--cream)}
+.burger svg{width:26px;height:26px}
+
+/* ============================================================
+   HERO
+============================================================ */
+/* mobile-first base */
+.hero{position:relative;overflow:hidden;padding:104px 0 58px}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 28%;opacity:.32}
+.hero-bg::after{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(130% 80% at 80% 0%,rgba(200,241,53,.14),transparent 55%),
+    linear-gradient(180deg,rgba(10,10,7,.74) 0%,rgba(10,10,7,.52) 32%,rgba(10,10,7,.96) 84%,var(--ink) 100%);
+}
+/* court line texture */
+.court-lines{position:absolute;inset:0;z-index:1;opacity:.08;pointer-events:none}
+.hero-inner{position:relative;z-index:3;width:100%}
+.hero-grid{display:grid;grid-template-columns:1fr;grid-template-areas:"head" "phone" "sub";gap:34px}
+.hero-head{grid-area:head}
+.hero-phone-wrap{grid-area:phone}
+.hero-sub{grid-area:sub}
+.hero .eyebrow{font-size:12px}
+.hero h1{font-size:clamp(33px,8.6vw,44px);font-weight:600;color:var(--cream);margin:16px 0 0;line-height:1.04}
+.hero h1 .gold{font-weight:600}
+.hero p.sub{margin-top:18px;font-size:16.5px;color:var(--text);max-width:540px}
+.hero-actions{display:none;flex-direction:column;gap:12px;margin-top:28px}
+.hero-actions .btn{justify-content:center;width:100%}
+.hero-trust{display:flex;flex-wrap:wrap;gap:13px 22px;margin-top:26px}
+.hero-trust span{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);font-weight:500}
+.hero-trust svg{width:16px;height:16px;color:var(--gold)}
+
+/* hero phone (app preview) */
+.hero-phone-wrap{position:relative;display:flex;justify-content:flex-start;align-items:center}
+.hero-phone-wrap .glow{position:absolute;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(200,241,53,.24),transparent 65%);filter:blur(24px);z-index:0}
+.hero-phone-wrap .phone{width:272px}
+.hero-phone-wrap .phone-screen{height:524px}
+.phone-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#0B0F0D;border-radius:31px}
+
+/* app HOME screen */
+.hs-pad{padding:42px 16px 18px}
+.hs-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.hs-head .u{display:flex;align-items:center;gap:9px}
+.hs-head .av{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--gold-2),var(--gold-deep))}
+.hs-head .u b{font-size:13px;color:#fff;font-family:"Clash Display";display:block;line-height:1.2}
+.hs-head .u small{font-size:10px;color:#6f7a6c}
+.hs-head .lvl{font-size:9.5px;color:#0B0F0D;font-weight:800;background:#C8F135;padding:5px 9px;border-radius:8px;letter-spacing:.05em}
+.hs-today{background:linear-gradient(150deg,#182410,#0d130c);border:1px solid rgba(200,241,53,.2);border-radius:18px;padding:16px;margin-bottom:12px}
+.hs-today .tg{display:inline-flex;align-items:center;gap:6px;font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#0B0F0D;background:#C8F135;padding:4px 8px;border-radius:6px}
+.hs-today h4{font-family:"Clash Display";color:#fff;font-size:18px;margin:12px 0 3px;font-weight:600}
+.hs-today p{font-size:10.5px;color:#8a9580;margin-bottom:14px}
+.hs-today .go{display:flex;align-items:center;justify-content:center;gap:8px;background:#C8F135;color:#0B0F0D;font-weight:800;font-size:12.5px;padding:11px;border-radius:11px}
+.hs-today .go svg{width:15px;height:15px}
+.hs-chips{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:12px}
+.hs-chips i{font-style:normal;font-size:10px;color:#c7d2b8;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.07);padding:7px 10px;border-radius:9px}
+.hs-chips i.on{color:#0B0F0D;background:#C8F135;border-color:#C8F135;font-weight:700}
+.hs-week{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.06);border-radius:13px;padding:13px}
+.hs-week .wt{display:flex;justify-content:space-between;font-size:9px;color:#7c876f;text-transform:uppercase;letter-spacing:.06em;font-weight:700;margin-bottom:10px}
+.hs-week .days{display:flex;justify-content:space-between;gap:5px}
+.hs-week .days span{flex:1;text-align:center;font-size:8.5px;color:#6f7a6c}
+.hs-week .days span b{display:block;width:100%;height:26px;border-radius:6px;margin-bottom:5px;background:rgba(255,255,255,.06)}
+.hs-week .days span.done b{background:#C8F135}
+.hs-week .days span.today b{background:rgba(200,241,53,.35);border:1px solid #C8F135}
+
+/* hero desktop */
+@media(min-width:880px){
+  .hero{padding:0;min-height:100vh;display:flex;align-items:center}
+  .hero-grid{grid-template-columns:1.08fr .92fr;grid-template-areas:"head phone" "sub phone";column-gap:54px;row-gap:0;align-items:center;padding-top:90px;padding-bottom:60px}
+  .hero-phone-wrap{justify-content:center;align-self:center}
+  .hero h1{font-size:clamp(46px,5vw,72px);margin-top:22px}
+  .hero p.sub{font-size:19px;margin-top:22px}
+  .hero-actions{display:flex;flex-direction:row;gap:16px}
+  .hero-actions .btn{width:auto}
+  .hero-trust{gap:24px;margin-top:32px}
+  .hero-phone-wrap .glow{width:440px;height:440px}
+  .hero-phone-wrap .phone{width:300px}
+}
+
+/* ============================================================
+   MARQUEE
+============================================================ */
+.marquee{background:linear-gradient(90deg,var(--gold-deep),var(--gold) 50%,var(--gold-deep));overflow:hidden;border-top:1px solid rgba(0,0,0,.25);border-bottom:1px solid rgba(0,0,0,.25)}
+.marquee-track{display:flex;gap:0;white-space:nowrap;animation:scroll 32s linear infinite;will-change:transform}
+.marquee-track span{font-family:"Clash Display";font-weight:600;font-size:15px;letter-spacing:.04em;color:#15130A;text-transform:uppercase;padding:16px 26px;display:flex;align-items:center;gap:26px}
+.marquee-track span::after{content:"●";font-size:8px;opacity:.55}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* ============================================================
+   STATS BAND
+============================================================ */
+.stats{position:relative;overflow:hidden;
+  background:
+    radial-gradient(60% 130% at 50% 0%,rgba(200,241,53,.07),transparent 55%),
+    linear-gradient(180deg,var(--ink),var(--ink-2));
+  border-bottom:1px solid var(--line-soft);}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;padding-top:70px;padding-bottom:70px}
+.stat{position:relative;padding-left:22px}
+.stat::before{content:"";position:absolute;left:0;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--gold),transparent)}
+.stat b{font-family:"Clash Display";font-size:clamp(38px,4.6vw,56px);color:var(--cream);font-weight:600;display:block;line-height:1}
+.stat span{display:block;margin-top:8px;font-size:14px;color:var(--gold);font-weight:600}
+.stat small{display:block;margin-top:4px;font-size:13px;color:var(--muted)}
+
+/* ============================================================
+   GENERIC SECTION HEAD
+============================================================ */
+.sec-head{max-width:680px;margin-bottom:64px}
+.sec-head h2{font-size:clamp(32px,4.4vw,52px);margin-top:18px}
+.sec-head p{margin-top:20px;color:var(--muted);font-size:18px}
+
+/* ============================================================
+   PAIN / CONEXÃO
+============================================================ */
+.pain{position:relative;overflow:hidden;
+  background:
+    radial-gradient(72% 60% at 10% 6%,rgba(61,61,7,.55),transparent 58%),
+    radial-gradient(46% 48% at 96% 92%,rgba(200,241,53,.06),transparent 60%),
+    var(--ink);}
+.pain-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.pain-list{list-style:none;margin-top:30px;display:grid;gap:16px}
+.pain-list li{display:flex;gap:14px;align-items:flex-start;font-size:16.5px;color:var(--text)}
+.pain-list li svg{width:22px;height:22px;color:var(--gold);flex-shrink:0;margin-top:1px}
+.pain-photo{position:relative;border-radius:24px;overflow:hidden;border:1px solid var(--line);aspect-ratio:4/4.4;box-shadow:var(--shadow)}
+.pain-photo img{width:100%;height:100%;object-fit:cover}
+.pain-photo .tag{position:absolute;left:18px;bottom:18px;background:rgba(10,10,7,.78);backdrop-filter:blur(8px);border:1px solid var(--line);padding:12px 16px;border-radius:14px;font-size:13px;color:var(--cream);font-weight:600;display:flex;align-items:center;gap:9px}
+.pain-photo .tag svg{width:16px;height:16px;color:var(--gold)}
+
+/* ============================================================
+   STEPS (tennis scoring motif)
+============================================================ */
+.steps{position:relative;overflow:hidden;
+  background:
+    radial-gradient(58% 72% at 100% 100%,rgba(61,61,7,.55),transparent 60%),
+    radial-gradient(40% 40% at 4% 10%,rgba(200,241,53,.05),transparent 60%),
+    linear-gradient(180deg,var(--ink-2),var(--ink));}
+.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.step{
+  background:linear-gradient(160deg,var(--card),rgba(10,10,7,.6));
+  border:1px solid var(--line);border-radius:var(--r);padding:28px 24px 30px;
+  position:relative;overflow:hidden;transition:border-color .3s,transform .3s;
+}
+.step::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 100% 0%,rgba(200,241,53,.12),transparent 55%);opacity:0;transition:opacity .3s}
+.step:hover{transform:translateY(-6px);border-color:rgba(200,241,53,.4)}
+.step:hover::after{opacity:1}
+.step .score{font-family:"Clash Display";font-weight:600;font-size:40px;color:var(--gold);line-height:1;position:relative;z-index:1}
+.step .ico{width:42px;height:42px;border-radius:11px;background:rgba(200,241,53,.1);border:1px solid var(--line);display:grid;place-items:center;margin:20px 0 18px;position:relative;z-index:1}
+.step .ico svg{width:21px;height:21px;color:var(--gold)}
+.step h3{font-size:19px;margin-bottom:9px;position:relative;z-index:1}
+.step p{font-size:14.5px;color:var(--muted);position:relative;z-index:1}
+
+/* ============================================================
+   APP SHOWCASE
+============================================================ */
+.app{position:relative;background:
+  radial-gradient(66% 70% at 88% 28%,rgba(61,61,7,.55),transparent 60%),
+  radial-gradient(44% 46% at 5% 96%,rgba(200,241,53,.06),transparent 60%),
+  var(--ink);overflow:hidden}
+.app-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:0 56px;align-items:start;grid-template-areas:"copy phone" "feats phone"}
+.app-copy{grid-area:copy}
+.app-grid .phone-stage{grid-area:phone;align-self:center}
+.app-feats{grid-area:feats;display:grid;gap:22px;margin-top:34px}
+.app-title{font-size:clamp(30px,3.6vw,40px);line-height:1.12}
+.app-feat{display:flex;gap:18px;align-items:flex-start}
+.app-feat .fi{width:48px;height:48px;border-radius:13px;flex-shrink:0;display:grid;place-items:center;background:linear-gradient(150deg,rgba(200,241,53,.16),rgba(61,61,7,.3));border:1px solid var(--line)}
+.app-feat .fi svg{width:23px;height:23px;color:var(--gold)}
+.app-feat h3{font-size:18px;margin-bottom:5px}
+.app-feat p{font-size:14.5px;color:var(--muted)}
+
+/* phone */
+.phone-stage{position:relative;display:flex;justify-content:center;align-items:center;min-height:560px}
+.glow{position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(200,241,53,.28),transparent 65%);filter:blur(20px);z-index:0}
+.phone{
+  position:relative;z-index:2;width:290px;border-radius:42px;padding:13px;
+  background:linear-gradient(160deg,#26260f,#0B0F0D);
+  border:1px solid rgba(200,241,53,.25);
+  box-shadow:0 50px 110px -30px rgba(0,0,0,.85),inset 0 1px 0 rgba(255,255,255,.07);
+}
+.phone-screen{background:#0B0F0D;border-radius:31px;overflow:hidden;height:560px;position:relative}
+.notch{position:absolute;top:11px;left:50%;transform:translateX(-50%);width:90px;height:22px;background:#000;border-radius:20px;z-index:5}
+.scr-pad{padding:42px 18px 18px}
+.scr-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.scr-head .u{display:flex;align-items:center;gap:9px}
+.scr-head .av{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--gold-2),var(--gold-deep))}
+.scr-head .u b{font-size:13px;color:#fff;font-family:"Clash Display";display:block;line-height:1.2}
+.scr-head .u small{font-size:10px;color:#6f7a6c}
+.scr-head .bell{width:32px;height:32px;border-radius:10px;background:rgba(255,255,255,.05);display:grid;place-items:center}
+.scr-head .bell svg{width:15px;height:15px;color:#C8F135}
+.ring-card{background:linear-gradient(150deg,#182410,#0d130c);border:1px solid rgba(200,241,53,.18);border-radius:16px;padding:16px;display:flex;align-items:center;gap:16px;margin-bottom:13px}
+.ring{position:relative;width:62px;height:62px;flex-shrink:0}
+.ring svg{transform:rotate(-90deg)}
+.ring .val{position:absolute;inset:0;display:grid;place-items:center;font-family:"Clash Display";font-weight:600;font-size:18px;color:#C8F135}
+.ring-card .meta b{font-size:12.5px;color:#fff;font-family:"Clash Display";display:block;margin-bottom:3px}
+.ring-card .meta span{font-size:10.5px;color:#7c876f;line-height:1.45;display:block}
+.wear-row{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:13px}
+.wear{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.06);border-radius:13px;padding:12px}
+.wear .wt{display:flex;align-items:center;gap:6px;font-size:9.5px;color:#7c876f;text-transform:uppercase;letter-spacing:.06em;font-weight:700;margin-bottom:7px}
+.wear .wt svg{width:12px;height:12px;color:#C8F135}
+.wear b{font-family:"Clash Display";font-size:20px;color:#fff;font-weight:600}
+.wear b small{font-size:11px;color:#7c876f;font-weight:400}
+.chart{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.06);border-radius:13px;padding:13px}
+.chart .ct{font-size:9.5px;color:#7c876f;text-transform:uppercase;letter-spacing:.06em;font-weight:700;margin-bottom:10px;display:flex;justify-content:space-between}
+.bars{display:flex;align-items:flex-end;gap:6px;height:54px}
+.bars i{flex:1;background:linear-gradient(180deg,#C8F135,rgba(200,241,53,.25));border-radius:4px 4px 2px 2px;opacity:.9}
+.float-badge{
+  position:absolute;z-index:3;background:rgba(10,10,7,.86);backdrop-filter:blur(10px);
+  border:1px solid var(--line);border-radius:14px;padding:11px 14px;display:flex;align-items:center;gap:10px;
+  box-shadow:var(--shadow);
+}
+.float-badge svg{width:18px;height:18px;color:var(--gold)}
+.float-badge b{font-size:12.5px;color:var(--cream);font-family:"Clash Display";font-weight:600;display:block;line-height:1.2}
+.float-badge small{font-size:10.5px;color:var(--muted)}
+.fb-1{top:60px;left:-6px}
+.fb-2{bottom:80px;right:-10px}
+
+/* ============================================================
+   PILLARS
+============================================================ */
+.pillars{position:relative;overflow:hidden;
+  background:
+    radial-gradient(56% 60% at 6% 4%,rgba(61,61,7,.5),transparent 58%),
+    radial-gradient(42% 46% at 98% 96%,rgba(200,241,53,.05),transparent 60%),
+    linear-gradient(180deg,var(--ink),var(--ink-2));}
+.pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.pillar{background:var(--card);border:1px solid var(--line-soft);border-radius:var(--r);padding:30px;transition:border-color .3s,transform .3s}
+.pillar:hover{border-color:rgba(200,241,53,.35);transform:translateY(-5px)}
+.pillar .pi{width:50px;height:50px;border-radius:13px;background:rgba(200,241,53,.1);display:grid;place-items:center;margin-bottom:20px}
+.pillar .pi svg{width:24px;height:24px;color:var(--gold)}
+.pillar h3{font-size:19px;margin-bottom:10px}
+.pillar p{font-size:14.5px;color:var(--muted)}
+
+/* ============================================================
+   PRICING
+============================================================ */
+.pricing{position:relative;background:
+  radial-gradient(82% 70% at 50% 0%,rgba(61,61,7,.6),transparent 60%),
+  radial-gradient(40% 50% at 100% 100%,rgba(200,241,53,.08),transparent 60%),
+  radial-gradient(40% 50% at 0% 100%,rgba(200,241,53,.05),transparent 60%),
+  var(--ink);}
+.price-card{
+  max-width:560px;margin:0 auto;position:relative;text-align:center;
+  background:linear-gradient(165deg,rgba(21,21,13,.95),rgba(10,10,7,.9));
+  border:1px solid rgba(200,241,53,.3);border-radius:26px;padding:48px 44px;
+  box-shadow:0 50px 120px -40px rgba(200,241,53,.35),var(--shadow);overflow:hidden;
+}
+.price-card::before{content:"";position:absolute;top:-1px;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.price-flag{display:inline-flex;align-items:center;gap:8px;background:rgba(200,241,53,.12);border:1px solid var(--line);color:var(--gold);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:7px 14px;border-radius:100px}
+.price-flag svg{width:14px;height:14px}
+.price-card h3{font-size:28px;margin:22px 0 6px}
+.price-card .sub{color:var(--muted);font-size:15.5px;margin-bottom:28px}
+.price-amount{display:flex;align-items:flex-end;justify-content:center;gap:8px;margin-bottom:6px}
+.price-amount .cur{font-family:"Clash Display";font-size:24px;color:var(--cream);font-weight:500;margin-bottom:8px}
+.price-amount .num{font-family:"Clash Display";font-size:72px;color:var(--cream);font-weight:600;line-height:.9;letter-spacing:-.02em}
+.price-amount .per{color:var(--muted);font-size:16px;margin-bottom:10px}
+.price-note{font-size:13.5px;color:var(--muted);margin-bottom:30px}
+.price-list{list-style:none;display:grid;gap:14px;margin-bottom:34px;justify-items:center}
+.price-list li{display:flex;align-items:flex-start;gap:12px;font-size:15.5px;color:var(--text);text-align:left}
+.price-list li svg{width:20px;height:20px;color:var(--gold);flex-shrink:0;margin-top:2px}
+.price-card .btn{width:100%;justify-content:center;font-size:16px;padding:19px}
+.price-secure{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:20px;flex-wrap:wrap}
+.price-secure span{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--muted)}
+.price-secure svg{width:15px;height:15px;color:var(--gold)}
+
+/* 3 planos (compra única) */
+.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1080px;margin:0 auto;align-items:stretch}
+.plan-card{position:relative;display:flex;flex-direction:column;text-align:center;
+  background:linear-gradient(165deg,rgba(21,21,13,.95),rgba(10,10,7,.9));
+  border:1px solid var(--line-soft);border-radius:24px;padding:38px 30px;
+  transition:border-color .3s,transform .3s;overflow:hidden}
+.plan-card:hover{transform:translateY(-6px);border-color:rgba(200,241,53,.35)}
+.plan-card.featured{border-color:rgba(200,241,53,.45);box-shadow:0 44px 110px -44px rgba(200,241,53,.32),var(--shadow)}
+.plan-card.featured::before{content:"";position:absolute;top:-1px;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.plan-flag{display:inline-flex;align-self:center;align-items:center;gap:7px;background:rgba(200,241,53,.12);border:1px solid var(--line);color:var(--gold);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;border-radius:100px;margin-bottom:18px}
+.plan-flag svg{width:13px;height:13px}
+.plan-card h3{font-size:26px;letter-spacing:.02em;margin-bottom:6px}
+.plan-card .psub{color:var(--muted);font-size:14px;margin-bottom:22px;min-height:40px}
+.plan-amount{display:flex;align-items:flex-end;justify-content:center;gap:6px;margin-bottom:4px}
+.plan-amount .cur{font-family:"Clash Display";font-size:20px;color:var(--cream);font-weight:500;margin-bottom:7px}
+.plan-amount .num{font-family:"Clash Display";font-size:54px;color:var(--cream);font-weight:600;line-height:.9;letter-spacing:-.02em}
+.plan-note{font-size:12.5px;color:var(--muted);margin-bottom:26px}
+.plan-list{list-style:none;display:grid;gap:12px;margin-bottom:30px;text-align:left}
+.plan-list li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--text)}
+.plan-list li svg{width:18px;height:18px;color:var(--gold);flex-shrink:0;margin-top:2px}
+.plan-card .btn{width:100%;justify-content:center;font-size:15px;padding:17px;margin-top:auto}
+.plan-card.featured .btn-ghost{border-color:var(--line);color:var(--cream)}
+@media(max-width:880px){.plans-grid{grid-template-columns:1fr;max-width:440px;gap:16px}.plan-card .psub{min-height:0}}
+
+/* ============================================================
+   AUTHORITY
+============================================================ */
+.authority{position:relative;overflow:hidden;
+  background:
+    radial-gradient(56% 72% at 100% 28%,rgba(61,61,7,.5),transparent 60%),
+    radial-gradient(40% 44% at 2% 92%,rgba(200,241,53,.05),transparent 60%),
+    linear-gradient(180deg,var(--ink-2),var(--ink));}
+.auth-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:center}
+.auth-photo{position:relative;border-radius:24px;overflow:hidden;border:1px solid var(--line);aspect-ratio:4/4.6;box-shadow:var(--shadow)}
+.auth-photo img{width:100%;height:100%;object-fit:cover}
+.auth-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(10,10,7,.6))}
+.auth-photo .cred{position:absolute;left:20px;bottom:20px;z-index:2}
+.auth-photo .cred b{font-family:"Clash Display";color:#fff;font-size:18px;display:block}
+.auth-photo .cred span{font-size:12.5px;color:var(--gold);font-weight:600}
+.auth-body h2{font-size:clamp(30px,4vw,46px);margin:16px 0 22px}
+.auth-body p{color:var(--text);font-size:16.5px;margin-bottom:18px;max-width:560px}
+.auth-quote{border-left:2px solid var(--gold);padding-left:22px;margin:28px 0;font-family:"Clash Display";font-size:20px;color:var(--cream);font-weight:500;line-height:1.4}
+.auth-meta{display:flex;gap:34px;margin-top:30px;flex-wrap:wrap}
+.auth-meta div b{font-family:"Clash Display";font-size:26px;color:var(--gold);font-weight:600;display:block}
+.auth-meta div span{font-size:13px;color:var(--muted)}
+
+/* ============================================================
+   FAQ
+============================================================ */
+.faq{position:relative;overflow:hidden;
+  background:
+    radial-gradient(52% 62% at 0% 100%,rgba(61,61,7,.5),transparent 60%),
+    radial-gradient(40% 44% at 100% 4%,rgba(200,241,53,.05),transparent 60%),
+    var(--ink);}
+.faq-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:56px;align-items:start}
+.faq-list{display:grid;gap:14px}
+.faq-item{background:var(--card);border:1px solid var(--line-soft);border-radius:16px;overflow:hidden;transition:border-color .3s}
+.faq-item.open{border-color:rgba(200,241,53,.35)}
+.faq-q{width:100%;background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:24px 26px;text-align:left;font-family:"Clash Display";font-size:18px;color:var(--cream);font-weight:500}
+.faq-q .ic{width:30px;height:30px;border-radius:9px;background:rgba(200,241,53,.1);display:grid;place-items:center;flex-shrink:0;transition:transform .3s,background .3s}
+.faq-q .ic svg{width:16px;height:16px;color:var(--gold);transition:transform .3s}
+.faq-item.open .ic{background:var(--gold)}
+.faq-item.open .ic svg{color:#15130A;transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.faq-a p{padding:0 26px 26px;color:var(--muted);font-size:15.5px}
+
+/* ============================================================
+   FINAL CTA
+============================================================ */
+.final{position:relative;text-align:center;overflow:hidden;padding:130px 0}
+.final-bg{position:absolute;inset:0;z-index:0}
+.final-bg img{width:100%;height:100%;object-fit:cover;opacity:.3}
+.final-bg::after{content:"";position:absolute;inset:0;background:radial-gradient(70% 80% at 50% 50%,rgba(61,61,7,.7),rgba(10,10,7,.95))}
+.final-inner{position:relative;z-index:2;max-width:740px;margin:0 auto;padding:0 24px}
+.final h2{font-size:clamp(32px,5.6vw,68px);margin:22px 0 22px}
+.final p{color:var(--text);font-size:19px;margin-bottom:38px;max-width:520px;margin-left:auto;margin-right:auto}
+.final .btn{font-size:17px;padding:20px 40px}
+.final .reassure{margin-top:22px;font-size:13.5px;color:var(--muted);display:flex;align-items:center;justify-content:center;gap:9px}
+.final .reassure svg{width:16px;height:16px;color:var(--gold)}
+
+/* ============================================================
+   FOOTER
+============================================================ */
+footer{background:var(--ink-2);border-top:1px solid var(--line-soft);padding:60px 0 34px}
+.foot-grid{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap;padding-bottom:40px;border-bottom:1px solid var(--line-soft)}
+.foot-brand{max-width:320px}
+.foot-brand p{font-size:14px;color:var(--muted);margin-top:16px}
+.foot-cols{display:flex;gap:64px;flex-wrap:wrap}
+.foot-col h4{font-family:"Karla";font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;font-weight:700}
+.foot-col a{display:block;font-size:14.5px;color:var(--text);margin-bottom:11px;transition:color .2s}
+.foot-col a:hover{color:var(--gold)}
+.foot-bottom{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding-top:28px}
+.foot-bottom p{font-size:13px;color:var(--muted)}
+.foot-social{display:flex;gap:12px}
+.foot-social a{width:40px;height:40px;border-radius:11px;border:1px solid var(--line);display:grid;place-items:center;color:var(--text);transition:all .25s}
+.foot-social a:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-3px)}
+.foot-social svg{width:18px;height:18px}
+
+/* ============================================================
+   SEAMS - costura luminosa no topo de cada dobra (ritmo de leitura)
+============================================================ */
+.steps::before,.app::before,.pillars::before,.pricing::before,.authority::before,.faq::before,.final::before{
+  content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:min(900px,84%);height:1px;z-index:4;pointer-events:none;
+  background:linear-gradient(90deg,transparent,rgba(200,241,53,.5),transparent);
+}
+/* leve halo abaixo da costura */
+.steps::after,.pillars::after,.authority::after{
+  content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:420px;height:120px;z-index:0;pointer-events:none;
+  background:radial-gradient(60% 100% at 50% 0%,rgba(200,241,53,.06),transparent 70%);
+}
+
+/* ============================================================
+   REVEAL ANIM
+============================================================ */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media(max-width:980px){
+  .section{padding:90px 0}
+  .nav-links{display:none}
+  .nav-cta .btn-ghost{display:none}
+  .burger{display:grid;place-items:center}
+  .stats .wrap{grid-template-columns:1fr 1fr;gap:36px 24px}
+  .pain-grid,.auth-grid,.faq-grid{grid-template-columns:1fr;gap:40px}
+  .app-grid{grid-template-columns:1fr;grid-template-areas:"copy" "phone" "feats";gap:30px}
+  .app-grid .phone-stage{align-self:auto}
+  .app-feats{margin-top:0}
+  .steps-grid,.pillars-grid{grid-template-columns:1fr 1fr}
+  .auth-photo,.pain-photo{max-width:440px}
+  .faq-grid .sec-head{margin-bottom:8px}
+}
+@media(max-width:560px){
+  body{font-size:16px}
+  .wrap{padding:0 18px}
+  .section{padding:74px 0}
+  .steps-grid,.pillars-grid,.stats .wrap{grid-template-columns:1fr}
+  .price-card{padding:38px 26px}
+  .price-amount .num{font-size:58px}
+  .auth-meta{gap:24px}
+  .float-badge{display:none}
+  .final{padding:84px 0}
+  .hero-bg img{opacity:.22}
+  .pain-photo{display:none}
+  .app .phone-stage{min-height:0;width:100%}
+  .app .phone-stage .phone{width:100%;padding:12px}
+  .app .phone-stage .phone-screen{height:auto;aspect-ratio:264/560}
+}
+/* ============================================================
+   VARIAÇÃO DE DOBRAS — seção clara, watermark, mecanismo, bento, prova social
+============================================================ */
+
+/* light (cream) section */
+.lite{background:#F1EFE2;color:#4a4a3c;border-top:1px solid rgba(0,0,0,.05);border-bottom:1px solid rgba(0,0,0,.05)}
+.lite h2,.lite h3,.lite h4{color:#15150C}
+.lite .eyebrow{color:#5d7a0e}
+.lite .eyebrow::before{background:#5d7a0e;opacity:.8}
+.lite .lead,.lite p{color:#6b6b58}
+.lite .gold{color:#5d7a0e}
+
+/* oversized watermark word */
+.bigword{position:absolute;font-family:"Clash Display";font-weight:700;line-height:.8;letter-spacing:-.03em;pointer-events:none;white-space:nowrap;z-index:0}
+
+/* DOBRA 2 — DOR (com watermark) */
+.pain{position:relative}
+.pain .bigword{top:7%;left:-2%;font-size:clamp(56px,10.5vw,150px);color:transparent;-webkit-text-stroke:1.5px rgba(200,241,53,.11);opacity:.9}
+.pain .wrap{position:relative;z-index:1}
+
+/* DOBRA 3 — O QUE É (cards concretos, fundo claro) */
+.what-head{max-width:720px;margin-bottom:54px}
+.what-head h2{font-size:clamp(32px,4.6vw,52px);margin-top:18px}
+.what-head p{margin-top:18px;font-size:18px}
+.what-def{display:inline-flex;align-items:center;gap:10px;background:#15150C;color:#fff;font-family:"Clash Display";font-weight:600;font-size:15px;padding:12px 18px;border-radius:100px;margin-bottom:6px}
+.what-def b{color:var(--gold)}
+.what-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.what-card{background:#fff;border:1px solid rgba(0,0,0,.07);border-radius:18px;padding:26px 22px;transition:transform .3s,box-shadow .3s}
+.what-card:hover{transform:translateY(-6px);box-shadow:0 24px 50px -24px rgba(0,0,0,.25)}
+.what-card .wn{font-family:"Clash Display";font-weight:600;font-size:13px;color:#9a9a86;margin-bottom:16px}
+.what-card .wi{width:46px;height:46px;border-radius:12px;background:#15150C;display:grid;place-items:center;margin-bottom:16px}
+.what-card .wi svg{width:23px;height:23px;color:var(--gold)}
+.what-card h3{font-size:18px;margin-bottom:8px}
+.what-card p{font-size:14px;color:#6b6b58}
+.what-card.hl{background:var(--gold);border-color:var(--gold)}
+.what-card.hl .wn{color:#3a4a08}
+.what-card.hl .wi{background:#15150C}
+.what-card.hl h3,.what-card.hl p{color:#15150C}
+
+/* DOBRA 4 — MECANISMO (lista editorial, tipografia grande) */
+.mech{position:relative;overflow:hidden;background:
+  radial-gradient(60% 80% at 100% 0%,rgba(61,61,7,.5),transparent 55%),
+  linear-gradient(180deg,var(--ink),var(--ink-2));}
+.mech .bigword{bottom:-4%;right:-2%;font-size:clamp(90px,16vw,210px);color:transparent;-webkit-text-stroke:1.5px rgba(246,243,231,.05)}
+.mech-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:start;position:relative;z-index:1}
+.mech-intro h2{font-size:clamp(30px,4.2vw,48px);margin-top:18px}
+.mech-intro p{margin-top:20px;color:var(--muted);font-size:17px}
+.mech-list{display:flex;flex-direction:column}
+.mech-row{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:baseline;padding:24px 0;border-top:1px solid var(--line-soft);transition:padding-left .3s}
+.mech-row:last-child{border-bottom:1px solid var(--line-soft)}
+.mech-row:hover{padding-left:10px}
+.mech-row .mi{font-family:"Clash Display";font-weight:600;font-size:18px;color:var(--gold);width:38px}
+.mech-row h3{font-family:"Clash Display";font-size:clamp(22px,3vw,30px);font-weight:500;color:var(--cream);line-height:1.05}
+.mech-row p{font-size:14.5px;color:var(--muted);margin-top:8px;max-width:480px}
+
+.pillars.lite{background:#F1EFE2}
+.lite .mod-body h3{color:var(--cream)}
+.lite .mod-body p{color:#c7c5b4}
+.lite .sec-head p{color:#6b6b58}
+/* vídeo vertical no mecanismo */
+.mech-video{margin-top:28px;max-width:270px}
+.vlabel{display:inline-flex;align-items:center;gap:8px;font-family:"Clash Display";font-weight:600;font-size:12.5px;color:var(--gold);text-transform:uppercase;letter-spacing:.1em;margin-bottom:14px}
+.vlabel svg{width:14px;height:14px}
+.vframe{position:relative;aspect-ratio:9/16;border-radius:22px;overflow:hidden;border:1px solid var(--line);box-shadow:0 34px 80px -32px rgba(0,0,0,.85),0 0 0 6px rgba(200,241,53,.04);background:#000}
+.vframe video,.vframe iframe{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0;display:block}
+@media(max-width:980px){.mech-video{max-width:260px}}
+
+/* DOBRA 5 — steps em fundo claro */
+.steps .step .ico{margin-top:0}
+.lite.steps{background:#F1EFE2}
+.lite .step{background:#fff;border-color:rgba(0,0,0,.08)}
+.lite .step::after{display:none}
+.lite .step:hover{border-color:var(--gold-deep)}
+.lite .step .score{color:#6f8f12}
+.lite .step .ico{background:#15150C;border-color:#15150C}
+.lite .step .ico svg{color:var(--gold)}
+.lite .step h3{color:#15150C}
+.lite .step p{color:#6b6b58}
+.lite .sec-head p{color:#6b6b58}
+
+/* DOBRA — banda curta de treinos rápidos */
+.quick{position:relative;overflow:hidden;background:linear-gradient(120deg,var(--gold),var(--gold-deep));padding:46px 0}
+.quick .wrap{display:flex;align-items:center;gap:32px;flex-wrap:wrap}
+.quick .qbadge{flex-shrink:0;width:92px;height:92px;border-radius:22px;background:#15150C;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--gold)}
+.quick .qbadge b{font-family:"Clash Display";font-size:26px;font-weight:600;line-height:1}
+.quick .qbadge span{font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;margin-top:3px}
+.quick .qbody{flex:1;min-width:260px}
+.quick .qbody h3{font-family:"Clash Display";font-size:clamp(22px,3.2vw,32px);color:#15130A;font-weight:600;line-height:1.1}
+.quick .qbody p{color:#3a3a0d;font-size:16px;margin-top:8px;max-width:620px;font-weight:500}
+.quick .qarrow{flex-shrink:0;width:54px;height:54px;border-radius:50%;background:#15150C;display:grid;place-items:center}
+.quick .qarrow svg{width:22px;height:22px;color:var(--gold)}
+@media(max-width:560px){.quick .qarrow{display:none}.quick .wrap{gap:20px}}
+
+/* DOBRA 7 — módulos do app (grid limpo) */
+.mods{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.mod{background:var(--card);border:1px solid var(--line-soft);border-radius:18px;overflow:hidden;transition:transform .3s,border-color .3s;position:relative;display:flex;flex-direction:column}
+.mod:hover{transform:translateY(-5px);border-color:rgba(200,241,53,.4)}
+.mod-shot{position:relative;aspect-ratio:16/10;overflow:hidden;background:radial-gradient(120% 110% at 50% 0%,rgba(200,241,53,.16),transparent 60%),linear-gradient(155deg,#1c2811,#0c1109);display:grid;place-items:center;border-bottom:1px solid var(--line-soft)}
+.mod-shot img{max-width:100%;height:100%;object-fit:cover;object-position:center;z-index:2;padding:20px 40px;border-radius:38px;min-height:100%!important}
+.mod-shot .mph{display:flex;flex-direction:column;align-items:center;gap:9px;color:rgba(200,241,53,.55);text-align:center;padding:14px}
+.mod-shot .mini{width:86%;max-width:226px;height:auto;position:relative;z-index:1}
+.mod-shot .mph svg{width:38px;height:38px}
+.mod-shot .mph span{font-size:11px;font-weight:600;font-family:"Karla";letter-spacing:.04em}
+.mod-shot .mtag{position:absolute;top:12px;left:12px;z-index:3;font-family:"Clash Display";font-size:10.5px;color:#0B0F0D;background:var(--gold);font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:7px}
+.mod-body{padding:22px 24px 26px}
+.mod-body h3{font-size:18px;margin-bottom:7px}
+.mod-body p{font-size:14px;color:var(--muted)}
+@media(max-width:980px){.mods{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.mods{grid-template-columns:1fr}}
+
+/* DOBRA 8 — prova social com prints */
+.prints{column-count:3;column-gap:16px}
+.print{break-inside:avoid;margin-bottom:16px;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:16px;overflow:hidden;box-shadow:0 12px 30px -20px rgba(0,0,0,.3)}
+.print img{width:100%;display:block}
+.print .ph{aspect-ratio:9/14;background:linear-gradient(160deg,#e9e7d8,#dcdac9);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:#9a9a86;text-align:center;padding:20px}
+.print .ph svg{width:34px;height:34px}
+.print .ph span{font-size:13px;font-weight:600;font-family:"Clash Display"}
+@media(max-width:980px){.prints{column-count:2}}
+@media(max-width:560px){.prints{column-count:1}}
+
+.bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:minmax(150px,auto);gap:16px}
+.btile{background:var(--card);border:1px solid var(--line-soft);border-radius:20px;padding:26px;display:flex;flex-direction:column;justify-content:space-between;transition:transform .3s,border-color .3s;position:relative;overflow:hidden}
+.btile:hover{transform:translateY(-5px);border-color:rgba(200,241,53,.35)}
+.btile .pi{width:48px;height:48px;border-radius:12px;background:rgba(200,241,53,.1);display:grid;place-items:center;margin-bottom:auto}
+.btile .pi svg{width:23px;height:23px;color:var(--gold)}
+.btile h3{font-size:18px;margin:18px 0 7px}
+.btile p{font-size:14px;color:var(--muted)}
+.btile.span2{grid-column:span 2}
+.btile.tall{grid-row:span 2}
+.btile.hl{background:linear-gradient(150deg,var(--gold),var(--gold-deep));border-color:var(--gold)}
+.btile.hl .pi{background:rgba(0,0,0,.18)}
+.btile.hl .pi svg{color:#15150C}
+.btile.hl h3{color:#15150C;font-size:24px}
+.btile.hl p{color:#3a4a08;font-weight:500}
+.btile .bphoto{position:absolute;inset:0;z-index:0}
+.btile .bphoto img{width:100%;height:100%;object-fit:cover;opacity:.5}
+.btile.photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(10,10,7,.92));z-index:1}
+.btile.photo>*{position:relative;z-index:2}
+
+/* DOBRA 8 — PROVA SOCIAL (cards de depoimento, fundo claro) */
+.social-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:48px;flex-wrap:wrap}
+.social-head h2{font-size:clamp(30px,4.4vw,50px);margin-top:16px}
+.social-proof{display:flex;align-items:center;gap:14px}
+.avatars{display:flex}
+.proof-stars{color:var(--gold-deep);font-size:22px;letter-spacing:3px;line-height:1}
+.avatars i{width:42px;height:42px;border-radius:50%;border:2px solid #F1EFE2;margin-left:-12px;background-size:cover;background-position:center;display:block}
+.avatars i:first-child{margin-left:0}
+.social-proof b{font-family:"Clash Display";font-size:15px;color:#15150C;display:block;line-height:1.2}
+.social-proof span{font-size:13px;color:#7a7a66}
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.tcard{background:#fff;border:1px solid rgba(0,0,0,.07);border-radius:20px;padding:26px;display:flex;flex-direction:column}
+.tcard .stars{color:var(--gold-deep);font-size:15px;letter-spacing:2px;margin-bottom:14px}
+.tcard .quote{font-size:16px;color:#2a2a20;line-height:1.5;flex:1}
+.tcard .who{display:flex;align-items:center;gap:12px;margin-top:22px;padding-top:18px;border-top:1px solid rgba(0,0,0,.07)}
+.tcard .who .av{width:42px;height:42px;border-radius:50%;background-size:cover;background-position:center;flex-shrink:0}
+.tcard .who b{font-family:"Clash Display";font-size:14px;color:#15150C;display:block;line-height:1.2}
+.tcard .who span{font-size:12.5px;color:#7a7a66}
+
+@media(max-width:980px){
+  .what-grid{grid-template-columns:1fr 1fr}
+  .mech-grid{grid-template-columns:1fr;gap:32px}
+  .bento{grid-template-columns:1fr 1fr;grid-auto-rows:minmax(140px,auto)}
+  .btile.span2,.btile.tall{grid-column:auto;grid-row:auto}
+  .tgrid{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  .what-grid{grid-template-columns:1fr}
+  .what-def{flex-direction:column;align-items:flex-start;border-radius:16px;gap:4px;padding:12px 16px}
+  .bento{grid-template-columns:1fr}
+  .social-head{align-items:flex-start}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================ HEADER ============================================================ -->
+<header id="header">
+  <div class="wrap nav">
+    <a href="#" class="logo" aria-label="Intensive Performance">
+      <img class="logo-img" src="https://intensiveperformance.com/wp-content/uploads/2026/06/logo-white-yellow.png" alt="Intensive Performance" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <span class="logo-fallback" style="display:none">Intensive<small>Performance</small></span>
+    </a>
+  </div>
+</header>
+
+<!-- ============================================================ HERO ============================================================ -->
+<section class="hero">
+  <div class="hero-bg">
+    <!-- SWAP IMAGE: quadra de tênis (saibro / grama). Troque a URL pela sua foto. -->
+    <img src="https://images.unsplash.com/photo-1531315396756-905d68d21b56?q=80&w=1800&auto=format&fit=crop" alt="Quadra de tênis de saibro vista de cima" onerror="this.style.display='none'">
+  </div>
+  <svg class="court-lines" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" fill="none">
+    <rect x="120" y="80" width="960" height="640" stroke="#C8F135" stroke-width="2"/>
+    <line x1="600" y1="80" x2="600" y2="720" stroke="#C8F135" stroke-width="2"/>
+    <line x1="120" y1="400" x2="1080" y2="400" stroke="#C8F135" stroke-width="2"/>
+    <rect x="300" y="220" width="600" height="360" stroke="#C8F135" stroke-width="2"/>
+  </svg>
+
+  <div class="hero-inner wrap">
+    <div class="hero-grid">
+      <div class="hero-head reveal">
+        <span class="eyebrow">Programas · Intensive Performance</span>
+        <h1>Preparação física específica para <span class="gold">tenistas.</span></h1>
+      </div>
+
+      <!-- app preview -->
+      <div class="hero-phone-wrap reveal">
+        <div class="glow"></div>
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="notch"></div>
+            <video class="phone-media" autoplay loop muted playsinline preload="metadata"
+                   poster="https://intensiveperformance.com/wp-content/uploads/2026/06/phone-4-scaled.png">
+              <source src="https://intensiveperformance.com/wp-content/uploads/2026/06/phone-5.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-sub reveal">
+        <p class="sub">Um programa de preparação física criado para tenistas. Treinos de força, agilidade e resistência específicos para o esporte, organizados por nível e por onde você treina, disponíveis no aplicativo.</p>
+        <div class="hero-actions">
+          <a href="#planos" class="btn btn-primary">
+            Ver os programas
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+        <div class="hero-trust">
+          <span><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Acesso imediato</span>
+          <span><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg> Compra segura</span>
+          <span><svg viewBox="0 0 24 24" fill="none"><path d="M4 7l8 5 8-5M4 7v10h16V7M4 7l8-4 8 4" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg> Pagamento único</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ MARQUEE ============================================================ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Treino 100% para tenistas</span><span>Acesso imediato</span><span>Treine de qualquer lugar</span><span>Dados do seu relógio</span><span>Pagamento único</span><span>Para todos os níveis</span>
+    <span>Treino 100% para tenistas</span><span>Acesso imediato</span><span>Treine de qualquer lugar</span><span>Dados do seu relógio</span><span>Pagamento único</span><span>Para todos os níveis</span>
+  </div>
+</div>
+
+<!-- ============================================================ DOBRA 2 · DOR ============================================================ -->
+<section class="section pain">
+  <span class="bigword" aria-hidden="true">PREPARAÇÃO FÍSICA</span>
+  <div class="wrap pain-grid">
+    <div class="reveal">
+      <span class="eyebrow">Para quem treina tênis</span>
+      <h2 style="font-size:clamp(30px,4.2vw,48px);margin-top:18px">Você joga tênis e faz<br>treino do tipo <span class="gold">ABCD na academia?</span></h2>
+      <p class="lead" style="margin-top:20px;font-size:15px;font-weight:300;color:var(--muted)">O treino tradicional de academia desenvolve força geral, mas não trabalha as demandas específicas do tênis: explosão, troca de direção, deslocamento e resistência ao longo da partida. São capacidades que pedem um treino pensado para o esporte.</p>
+      <ul class="pain-list">
+        <li><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 8v5M12 16h.01" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg> Sente o cansaço chegar antes do fim da partida.</li>
+        <li><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 8v5M12 16h.01" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg> Falta agilidade para alcançar a bola curta e mudar de direção.</li>
+        <li><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 8v5M12 16h.01" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg> Treina sem considerar a recuperação, o que aumenta o risco de lesão.</li>
+        <li><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 8v5M12 16h.01" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg> Não segue um plano específico para a sua evolução no tênis.</li>
+      </ul>
+    </div>
+    <div class="pain-photo reveal">
+      <!-- SWAP IMAGE: tenista cansado / detalhe de esforço -->
+      <img src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?q=80&w=1200&auto=format&fit=crop" alt="Tenista em esforço durante a partida" onerror="this.parentElement.style.background='linear-gradient(160deg,#3D3D07,#0A0A07)'">
+      <div class="tag"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg> A preparação física pesa nos pontos longos</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ DOBRA 3 · O QUE É (seção clara) ============================================================ -->
+<section class="section lite">
+  <div class="wrap">
+    <div class="what-head reveal">
+      <span class="eyebrow">O que é, exatamente</span>
+      <h2>Treinos focados na sua<br>evolução no tênis.</h2>
+      <p class="what-def"><span>Não é uma planilha ou PDF.</span> <b>É um aplicativo com tudo detalhado.</b></p>
+      <p>Pelo aplicativo você acessa treinos em vídeo, com séries e repetições, organizados por nível e por onde você treina.</p>
+    </div>
+    <div class="what-grid">
+      <div class="what-card reveal">
+        <div class="wn">01</div>
+        <div class="wi"><svg viewBox="0 0 24 24" fill="none"><path d="M8 5l11 7-11 7V5z" fill="currentColor"/></svg></div>
+        <h3>Treinos em vídeo</h3>
+        <p>Cada exercício é demonstrado em vídeo, com séries e repetições indicadas.</p>
+      </div>
+      <div class="what-card reveal">
+        <div class="wn">02</div>
+        <div class="wi"><svg viewBox="0 0 24 24" fill="none"><path d="M4 19V5M4 19h16M8 16v-5M12 16V8M16 16v-9M20 16v-3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Por nível</h3>
+        <p>Você seleciona o seu nível atual: iniciante, intermediário ou avançado.</p>
+      </div>
+      <div class="what-card reveal">
+        <div class="wn">03</div>
+        <div class="wi"><svg viewBox="0 0 24 24" fill="none"><path d="M3 12h4l2 6 4-14 2 8h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Por onde você treina</h3>
+        <p>Você escolhe onde prefere treinar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ DOBRA 4 · MECANISMO ============================================================ -->
+<section class="section mech">
+  <span class="bigword" aria-hidden="true">TÊNIS</span>
+  <div class="wrap mech-grid">
+    <div class="mech-intro reveal">
+      <span class="eyebrow">Conheça mais</span>
+      <h2>Um programa para <span class="gold">tenistas.</span></h2>
+      <div class="mech-video">
+        <span class="vlabel"><svg viewBox="0 0 24 24" fill="none"><path d="M8 5l11 7-11 7V5z" fill="currentColor"/></svg> Veja na prática</span>
+        <div class="vframe">
+          <iframe src="https://www.youtube.com/embed/8eEBayrJ0kg?autoplay=1&mute=1&loop=1&playlist=8eEBayrJ0kg&controls=1&modestbranding=1&rel=0&playsinline=1" title="Treino Intensive Performance com Almeida" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+    <div class="mech-list reveal">
+      <div class="mech-row">
+        <span class="mi">01</span>
+        <div><h3>Explosão e potência</h3><p>Para o arranque na bola curta e a geração de força com o corpo.</p></div>
+      </div>
+      <div class="mech-row">
+        <span class="mi">02</span>
+        <div><h3>Troca de direção</h3><p>Para acelerar, frear e mudar de direção com equilíbrio.</p></div>
+      </div>
+      <div class="mech-row">
+        <span class="mi">03</span>
+        <div><h3>Footwork</h3><p>O trabalho de pés para se posicionar bem e chegar à bola.</p></div>
+      </div>
+      <div class="mech-row">
+        <span class="mi">04</span>
+        <div><h3>Resistência</h3><p>Para manter a intensidade ao longo de toda a partida.</p></div>
+      </div>
+      <div class="mech-row">
+        <span class="mi">05</span>
+        <div><h3>Prevenção de lesão</h3><p>Trabalho específico para ombro, punho, joelho e tornozelo.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ STEPS ============================================================ -->
+<section class="section steps lite" id="como">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Como funciona</span>
+      <h2>Passo a passo.</h2>
+      <p>O aplicativo organiza o seu dia de treino. Você indica como está se sentindo e recebe a sessão adequada ao momento.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step reveal">        <div class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M9 11l3 3L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Faça o check-in</h3>
+        <p>Você informa sono, energia e carga da semana em alguns segundos.</p>
+      </div>
+      <div class="step reveal">        <div class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <h3>Receba o treino</h3>
+        <p>O aplicativo indica o volume do dia, com a intensidade adequada ao seu momento.</p>
+      </div>
+      <div class="step reveal">        <div class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M3 17l6-6 4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 7h7v7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Treine e registre</h3>
+        <p>Siga os vídeos com séries e repetições. Os dados do seu relógio você registra em campos próprios pra cada modelo.</p>
+      </div>
+      <div class="step reveal">        <div class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M8 21h8M12 17v4M7 4h10v4a5 5 0 01-10 0V4z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 6H4v1a3 3 0 003 3M17 6h3v1a3 3 0 01-3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Acompanhe a evolução</h3>
+        <p>Ao longo das semanas, o aplicativo acompanha a sua carga e o seu progresso.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ APP SHOWCASE ============================================================ -->
+<section class="section app" id="app">
+  <div class="wrap app-grid">
+    <div class="app-copy reveal">
+      <span class="eyebrow">Acompanhamento contínuo</span>
+      <h2 class="app-title" style="margin-top:18px">Um acompanhamento que evolui <span class="gold">com você.</span></h2>
+      <p class="lead" style="margin-top:20px">Diferente de um material fixo em PDF, o programa acompanha a sua rotina: faz o check-in da recuperação e ajusta a sessão conforme os dados que você registra do seu relógio.</p>
+    </div>
+
+    <!-- PHONE -->
+    <div class="phone-stage reveal">
+      <div class="glow"></div>
+      <div class="float-badge fb-1">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M3 12h4l2 6 4-14 2 8h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div><b>Prontidão</b><small>atualizada todo dia</small></div>
+      </div>
+      <div class="float-badge fb-2">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        <div><b>Carga equilibrada</b><small>treino e recuperação</small></div>
+      </div>
+
+      <div class="phone">
+        <div class="phone-screen">
+          <div class="notch"></div>
+          <video class="phone-media" autoplay loop muted playsinline preload="metadata"
+                 poster="https://intensiveperformance.com/wp-content/uploads/2026/06/phone-2-scaled.png">
+            <source src="https://intensiveperformance.com/wp-content/uploads/2026/06/phone-3.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+
+    <div class="app-feats reveal">
+      <div class="app-feat">
+        <div class="fi"><svg viewBox="0 0 24 24" fill="none"><rect x="6" y="7" width="12" height="10" rx="3" stroke="currentColor" stroke-width="2"/><path d="M9 7l1-3h4l1 3M9 17l1 3h4l1-3" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></div>
+        <div><h3>Dados do seu relógio</h3><p>Apple Watch, Polar, WHOOP, Amazfit e outros: você registra frequência cardíaca, sono e prontidão em campos próprios pra cada modelo.</p></div>
+      </div>
+      <div class="app-feat">
+        <div class="fi"><svg viewBox="0 0 24 24" fill="none"><path d="M4 19V5M4 19h16M8 16v-5M12 16V8M16 16v-9M20 16v-3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><h3>Controle de carga</h3><p>Gráficos de carga aguda e crônica para acompanhar o equilíbrio entre treino e recuperação.</p></div>
+      </div>
+      <div class="app-feat">
+        <div class="fi"><svg viewBox="0 0 24 24" fill="none"><path d="M3 12h4l2 6 4-14 2 8h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><h3>Treine onde estiver</h3><p>Opções para academia, casa com elásticos ou modelo híbrido.</p></div>
+      </div>
+      <div class="app-feat">
+        <div class="fi"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M3 12h18M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18" stroke="currentColor" stroke-width="2"/></svg></div>
+        <div><h3>Comunidade de tenistas</h3><p>Acesso a uma comunidade com alunos de vários países, dentro do aplicativo.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ DOBRA 7 · MÓDULOS DO APP ============================================================ -->
+<section class="section pillars lite">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">O que tem no aplicativo</span>
+      <h2>O que você encontra<br>no aplicativo.</h2>
+      <p>Além dos treinos, o aplicativo reúne os recursos para acompanhar a sua preparação física de forma completa.</p>
+    </div>
+    <div class="mods">
+      <div class="mod reveal">
+        <div class="mod-shot">
+          <span class="mtag">Treinos</span>
+          <img src="https://intensiveperformance.com/wp-content/uploads/2026/06/treinos.png" alt="Treinos específicos no app" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="mod-body">
+          <h3>Treinos específicos</h3>
+          <p>Sessões em vídeo de força, footwork, condicionamento e mobilidade, organizadas por nível e ambiente.</p>
+        </div>
+      </div>
+      <div class="mod reveal">
+        <div class="mod-shot">
+          <span class="mtag">Prontidão</span>
+          <img src="https://intensiveperformance.com/wp-content/uploads/2026/06/dados-fisiologicos.png" alt="Dados fisiológicos no app" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="mod-body">
+          <h3>Dados fisiológicos</h3>
+          <p>Check-in diário, sono e os dados do relógio que você registra, pra acompanhar a recuperação.</p>
+        </div>
+      </div>
+      <div class="mod reveal">
+        <div class="mod-shot">
+          <span class="mtag">Evolução</span>
+          <img src="https://intensiveperformance.com/wp-content/uploads/2026/06/evolucao-fisica.png" alt="Histórico de evolução no app" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="mod-body">
+          <h3>Histórico de evolução</h3>
+          <p>Acompanhe carga, consistência e progresso ao longo das semanas.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ DOBRA 8 · PROVA SOCIAL (seção clara) ============================================================ -->
+<!-- TROQUE os depoimentos e avatares por reais (prints/fotos dos seus alunos) -->
+<section class="section lite">
+  <div class="wrap">
+    <div class="social-head reveal">
+      <div>
+        <span class="eyebrow">Depoimentos</span>
+        <h2>A experiência de<br>quem já treina.</h2>
+      </div>
+      <div class="social-proof">
+        <div class="proof-stars">★★★★★</div>
+        <div><b>+1.000 tenistas</b><span>treinando com a Intensive</span></div>
+      </div>
+    </div>
+    <!-- Prints reais dos depoimentos (masonry ajusta as alturas automaticamente) -->
+    <div class="prints">
+      <div class="print reveal"><img src="https://intensiveperformance.com/wp-content/uploads/2025/06/intensiveperformance-depoimento-1-768x926.jpg" alt="Depoimento de aluno Intensive Performance" loading="lazy" onerror="this.closest('.print').style.display='none'"></div>
+      <div class="print reveal"><img src="https://intensiveperformance.com/wp-content/uploads/2025/06/intensiveperformance-depoimento-4-768x460.jpg" alt="Depoimento de aluno Intensive Performance" loading="lazy" onerror="this.closest('.print').style.display='none'"></div>
+      <div class="print reveal"><img src="https://intensiveperformance.com/wp-content/uploads/2025/06/intensiveperformance-depoimento-3-768x340.jpg" alt="Depoimento de aluno Intensive Performance" loading="lazy" onerror="this.closest('.print').style.display='none'"></div>
+      <div class="print reveal"><img src="https://intensiveperformance.com/wp-content/uploads/2025/06/intensiveperformance-depoimento-5-768x347.jpg" alt="Depoimento de aluno Intensive Performance" loading="lazy" onerror="this.closest('.print').style.display='none'"></div>
+      <div class="print reveal"><img src="https://intensiveperformance.com/wp-content/uploads/2025/06/intensiveperformance-depoimento-2-768x134.jpg" alt="Depoimento de aluno Intensive Performance" loading="lazy" onerror="this.closest('.print').style.display='none'"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ DOBRA 9 · TREINADOR ============================================================ -->
+<section class="section authority" id="treinador">
+  <div class="wrap auth-grid">
+    <div class="auth-photo reveal">
+      <!-- Foto do treinador -->
+      <img src="https://intensiveperformance.com/wp-content/uploads/2025/05/91DE87B6-CA69-4D54-B39B-E584F704F844_L0_001-16_04_2025-15_04_27-Copia.jpg" alt="Almeida, treinador de preparação física para tenistas" style="object-position:center 22%" onerror="this.parentElement.style.background='linear-gradient(160deg,#3D3D07,#0A0A07)'">
+      <div class="cred">
+        <b>Almeida · Treinador</b>
+        <span>@almeida_treinador</span>
+      </div>
+    </div>
+    <div class="auth-body reveal">
+      <span class="eyebrow">O treinador</span>
+      <h2>Quem desenvolve<br>o seu treino.</h2>
+      <p>Sou graduado em Educação Física e especializado em preparação física para tenistas. Criei a Intensive Performance para oferecer um treino voltado às demandas específicas do esporte.</p>
+      <p>Atendo atletas presencialmente em São Paulo e levei esse mesmo método para o aplicativo, para que mais tenistas possam treinar com essa estrutura onde estiverem.</p>
+      <blockquote class="auth-quote">"O objetivo não é só ficar forte na academia, mas levar esse preparo para dentro da quadra."</blockquote>
+      <div class="auth-meta">
+        <div><b>+30k</b><span>Comunidade de tenistas</span></div>
+        <div><b>100%</b><span>Focado em tênis</span></div>
+        <div><b>+1.000</b><span>Alunos no app</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ DOBRA 10 · PREÇO ============================================================ -->
+<section class="section pricing" id="planos">
+  <div class="wrap">
+    <div class="sec-head reveal" style="text-align:center;margin:0 auto 56px">
+      <span class="eyebrow" style="justify-content:center">Programas</span>
+      <h2>Escolha o seu<br>programa de treino.</h2>
+    </div>
+
+    <div class="plans-grid">
+      <!-- GYM -->
+      <div class="plan-card reveal">
+        <span class="plan-flag"><svg viewBox="0 0 24 24" fill="none"><path d="M4 19V5M4 19h16M8 16v-5M12 16V8M16 16v-9M20 16v-3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Academia</span>
+        <h3>GYM</h3>
+        <p class="psub">Treinos pensados para quem treina na academia.</p>
+        <div class="plan-amount">
+          <span class="cur">R$</span>
+          <span class="num">179,90</span>
+        </div>
+        <p class="plan-note">Pagamento único · acesso imediato</p>
+        <ul class="plan-list">
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Treinos específicos pra tênis na academia</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Vídeos com séries e repetições detalhadas</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Você escolhe o seu nível na compra</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Prevenção de lesão específica pra tênis</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Tudo detalhado dentro do aplicativo</li>
+        </ul>
+        <!-- CHECKOUT GYM: troque o href pela URL do checkout Stripe do produto GYM -->
+        <a href="/gym" id="cta-before-checkout" class="btn btn-primary plan-cta" data-plan="GYM" data-value="179.90">
+          QUERO ADQUIRIR!
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <!-- HOME -->
+      <div class="plan-card reveal">
+        <span class="plan-flag"><svg viewBox="0 0 24 24" fill="none"><path d="M3 11l9-8 9 8M5 9v10h14V9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Casa</span>
+        <h3>HOME</h3>
+        <p class="psub">Treinos para fazer em casa, com pouco equipamento.</p>
+        <div class="plan-amount">
+          <span class="cur">R$</span>
+          <span class="num">179,90</span>
+        </div>
+        <p class="plan-note">Pagamento único · acesso imediato</p>
+        <ul class="plan-list">
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Treinos para casa, com elásticos e peso corporal</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Vídeos com séries e repetições detalhadas</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Você escolhe o seu nível na compra</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Prevenção de lesão específica pra tênis</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Tudo detalhado dentro do aplicativo</li>
+        </ul>
+        <!-- CHECKOUT HOME: troque o href pela URL do checkout Stripe do produto HOME -->
+        <a href="/home" id="cta-before-checkout" class="btn btn-primary plan-cta" data-plan="HOME" data-value="179.90">
+          QUERO ADQUIRIR!
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <!-- HÍBRIDO (destaque) -->
+      <div class="plan-card featured reveal">
+        <span class="plan-flag"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 7.4H22l-6 4.5 2.3 7.1L12 16.6 5.7 21l2.3-7.1-6-4.5h7.6L12 2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg> Mais completo</span>
+        <h3>HÍBRIDO</h3>
+        <p class="psub">Academia e casa juntos: treine onde der no seu dia.</p>
+        <div class="plan-amount">
+          <span class="cur">R$</span>
+          <span class="num">264,90</span>
+        </div>
+        <p class="plan-note">Pagamento único · acesso imediato</p>
+        <ul class="plan-list">
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Treinos para academia e para casa</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Vídeos com séries e repetições detalhadas</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Você escolhe o seu nível na compra</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Prevenção de lesão específica pra tênis</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Tudo detalhado dentro do aplicativo</li>
+        </ul>
+        <!-- CHECKOUT HÍBRIDO: troque o href pela URL do checkout Stripe do produto HÍBRIDO -->
+        <a href="/hibrido" id="cta-before-checkout" class="btn btn-primary plan-cta" data-plan="HIBRIDO" data-value="264.90">
+          QUERO ADQUIRIR!
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="price-secure" style="margin-top:34px">
+      <span><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="10" width="14" height="10" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 10V7a4 4 0 018 0v3" stroke="currentColor" stroke-width="2"/></svg> Pagamento seguro</span>
+      <span><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Acesso imediato</span>
+      <span><svg viewBox="0 0 24 24" fill="none"><path d="M4 7l8 5 8-5M4 7v10h16V7M4 7l8-4 8 4" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg> Pagamento único, sem mensalidade</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ DOBRA 11 · FAQ ============================================================ -->
+<section class="section faq" id="faq">
+  <div class="wrap faq-grid">
+    <div class="sec-head reveal" style="margin-bottom:0">
+      <span class="eyebrow">Ainda tem dúvida?</span>
+      <h2>Perguntas<br>frequentes.</h2>
+      <p>Se ficar qualquer coisa, é só chamar no Instagram.</p>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-q">Preciso ir à academia pra treinar?<span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span></button>
+        <div class="faq-a"><p>Não. Existem programas para academia (GYM), para casa (HOME, com elásticos e peso corporal) e o híbrido (os dois juntos). Você escolhe na compra e o app traz o treino pensado pra esse ambiente, em qualquer nível.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Funciona com Apple Watch e outros relógios?<span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span></button>
+        <div class="faq-a"><p>Sim. Tem um campo próprio pra cada modelo (Apple Watch, Polar, WHOOP, Amazfit e outros): você registra frequência cardíaca, sono e prontidão no app, e o treino do dia se ajusta a partir desses dados. O preenchimento é manual, então funciona com qualquer relógio.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">O treino serve pro meu nível?<span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span></button>
+        <div class="faq-a"><p>Serve. Tem caminho pra iniciante, intermediário e avançado. E o check-in diário regula a intensidade conforme seu sono e sua carga, então o treino nunca fica pesado demais nem fácil demais.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Isso é aula de técnica ou tática de tênis?<span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span></button>
+        <div class="faq-a"><p>Não. A Intensive é preparação física: força, footwork, condicionamento, mobilidade e prevenção de lesão. É o trabalho que sustenta a sua técnica: é ela que te leva até a bola e te faz aguentar a partida inteira.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">É pagamento único ou tem mensalidade?<span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span></button>
+        <div class="faq-a"><p>É pagamento único, sem mensalidade. Você compra o programa uma vez e o acesso fica liberado no app. A liberação é na hora da confirmação do pagamento.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ FINAL CTA ============================================================ -->
+<section class="final">
+  <div class="final-bg">
+    <!-- SWAP IMAGE: tenista em ação -->
+    <img src="https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?q=80&w=1800&auto=format&fit=crop" alt="Tenista pronto para o saque" onerror="this.style.display='none'">
+  </div>
+  <div class="final-inner">
+    <span class="eyebrow" style="justify-content:center">Comece agora</span>
+    <h2>Treine para o<br>seu <span class="gold">tênis.</span></h2>
+    <p>Um programa de preparação física pensado para tenistas, com tudo detalhado no aplicativo.</p>
+    <a href="#planos" class="btn btn-primary">
+      Escolher meu programa
+      <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <div class="reassure"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg> Pagamento único · Acesso imediato · GYM, HOME ou Híbrido</div>
+  </div>
+</section>
+
+<!-- ============================================================ FOOTER ============================================================ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="#" class="logo" aria-label="Intensive Performance">
+          <img class="logo-img" src="https://intensiveperformance.com/wp-content/uploads/2026/06/logo-white-yellow.png" alt="Intensive Performance" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <span class="logo-fallback" style="display:none">Intensive<small>Performance</small></span>
+        </a>
+        <p>Preparação física específica para tenistas. Treino de alto rendimento, no seu ritmo, onde você estiver.</p>
+      </div>
+      <div class="foot-social">
+        <a href="https://www.instagram.com/almeida_treinador/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+        <a href="https://wa.me/15557443243" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none"><path d="M4 20l1.5-4A8 8 0 1112 20a8 8 0 01-4.5-1.4L4 20z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* header on scroll */
+const header=document.getElementById('header');
+const onScroll=()=>header.classList.toggle('scrolled',window.scrollY>30);
+onScroll();window.addEventListener('scroll',onScroll,{passive:true});
+
+/* mobile menu (simple anchor jump fallback) */
+const burger=document.getElementById('burger');
+if(burger){burger.addEventListener('click',()=>{document.querySelector('#planos').scrollIntoView({behavior:'smooth'});});}
+
+/* FAQ accordion */
+document.querySelectorAll('.faq-item').forEach(item=>{
+  const q=item.querySelector('.faq-q');
+  const a=item.querySelector('.faq-a');
+  q.addEventListener('click',()=>{
+    const open=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-a').style.maxHeight=null;});
+    if(!open){item.classList.add('open');a.style.maxHeight=a.scrollHeight+'px';}
+  });
+});
+
+/* reveal on scroll */
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%4*0.06)+'s';io.observe(el);});
+
+/* ============================================================
+   META PIXEL - instrumentacao de eventos (COMPRA ÚNICA)
+   1) Cole seu fbq init no <head> (Pixel base).
+   2) Cada botao de plano dispara InitiateCheckout com o valor do produto.
+   3) Na pagina de sucesso do Stripe, dispare Purchase (NAO Subscribe)
+      reusando o MESMO eventID p/ deduplicar com a CAPI (webhook Stripe).
+============================================================ */
+function genEventId(){return 'ip-'+Date.now()+'-'+Math.random().toString(16).slice(2,8);}
+
+document.querySelectorAll('.plan-cta').forEach(function(btn){
+  btn.addEventListener('click',function(e){
+    const eventId=genEventId();
+    const value=parseFloat(btn.getAttribute('data-value'))||0;
+    const plan=btn.getAttribute('data-plan')||'Produto Intensive';
+    // InitiateCheckout - evento com historico na conta (otimizacao inicial)
+    if(typeof fbq==='function'){
+      fbq('track','InitiateCheckout',{value:value,currency:'BRL',content_name:plan,content_type:'product'},{eventID:eventId});
+    }
+    // Guarde p/ reusar no Purchase na pagina de sucesso (dedup com a CAPI)
+    try{
+      sessionStorage.setItem('ip_event_id',eventId);
+      sessionStorage.setItem('ip_value',value);
+      sessionStorage.setItem('ip_plan',plan);
+    }catch(err){}
+    // e.preventDefault(); // descomente se quiser disparar antes de redirecionar
+  });
+});
+
+/* Na PÁGINA DE SUCESSO do Stripe, dispare o Purchase assim:
+   fbq('track','Purchase',{
+     value: parseFloat(sessionStorage.getItem('ip_value'))||0,
+     currency:'BRL',
+     content_name: sessionStorage.getItem('ip_plan'),
+     content_type:'product'
+   },{eventID: sessionStorage.getItem('ip_event_id')});
+   e mande o MESMO eventID na CAPI pelo webhook checkout.session.completed. */
+</script>
+</body>
+</html>
