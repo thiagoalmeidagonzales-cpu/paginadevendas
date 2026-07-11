@@ -1,0 +1,14 @@
+@font-face {
+  font-family: 'Karla';
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url('/fonts/Karla.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Clash Display';
+  font-style: normal;
+  font-weight: 200 700;
+  font-display: swap;
+  src: url('/fonts/ClashDisplay-Variable.woff2') format('woff2');
+}
