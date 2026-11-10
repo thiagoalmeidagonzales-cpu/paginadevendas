@@ -26,3 +26,37 @@ PENDÊNCIAS:
   - No checkout, configurar a URL de sucesso: /obrigada-treinamentopersonalizado (dispara Purchase R$ 499).
   - YouTube: confirmar https://www.youtube.com/@almeida_treinador em links/index.html.
   - Login /acesso-dev: bloco "CONFIG DE ACESSO" em acesso-dev/index.html (DEV_USER_HASH, DEV_PASS_HASH, UNLOCK_VERSION).
+
+
+=====================================================================
+/acesso-dev — LOGIN, SENHA E DADOS REAIS
+=====================================================================
+
+ONDE TROCAR LOGIN/SENHA: acesso-dev/index.html, bloco "CONFIG DE ACESSO" (início do <script>).
+  DEV_USER_HASH / DEV_PASS_HASH = hash SHA-256 de "ip-dev-2026:SEU_VALOR".
+  O comando para gerar o hash está comentado logo acima, é só colar no console do navegador.
+  UNLOCK_VERSION: troque ('v1' -> 'v2') para destravar após 3 tentativas erradas.
+
+DADOS: o painel agora começa ZERADO e em modo real (DATA_MODE = 'real').
+  Os números anteriores eram FICTÍCIOS (botão "Ver demonstração" ainda mostra o exemplo).
+  A coleta real já está ativa: cada clique das páginas novas vai para o GTM (dataLayer) e Meta Pixel.
+  No GTM, crie uma tag GA4 com acionador "Evento personalizado" = link_click / cta_click
+  (parâmetros link_id, cta_id, page). País e cidade o GA4 captura sozinho.
+
+  Para o painel exibir esses dados, crie um endpoint em API_URL (/api/analytics),
+  por ex. uma função Vercel/Netlify que consulta a GA4 Data API, recebendo ?page=&range=
+  e respondendo JSON neste formato:
+  {
+    "kpis": {"visits":0,"unique":0,"clicks":0,"checkouts":0,"purchases":0,"avgTime":0},
+    "daily": [{"date":"2026-11-10","visits":0,"clicks":0}],
+    "funnel": [{"label":"Abriram o /links","count":0}],
+    "clicks": [{"name":"Plataforma","area":"Serviços","count":0}],
+    "sources": [{"label":"Instagram","count":0}],
+    "countries": [{"label":"Brasil","count":0}],
+    "cities": [{"label":"São Paulo, BR","count":0}],
+    "devices": {"mobile":0,"desktop":0},
+    "scroll": [0,0,0,0],
+    "journeys": [{"time":"14:52","id":"#1","source":"IG bio","device":"iPhone","city":"São Paulo","country":"BR","steps":["/links","Plataforma"]}],
+    "liveNow": 0
+  }
+  Proteja esse endpoint no servidor (ele não deve responder sem autenticação).

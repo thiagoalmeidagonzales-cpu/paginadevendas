@@ -72,6 +72,18 @@ input::placeholder{color:#5f5e4f}
       </div>
     </header>
 
+    <sc-if value="{{ isDemo }}" hint-placeholder-val="{{ false }}">
+      <div style="margin-top:16px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:rgba(255,190,60,.08);border:1px solid rgba(255,190,60,.4);border-radius:14px;padding:12px 16px">
+        <span style="font-size:14px;color:#F6F3E7"><b style="color:#FFBE3C">Modo demonstração.</b> Estes números são fictícios.</span>
+        <button onClick="{{ toggleDemo }}" style="font:inherit;cursor:pointer;font-size:12.5px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:#15130A;background:#FFBE3C;border:none;padding:8px 14px;border-radius:100px">Ver dados reais</button>
+      </div>
+    </sc-if>
+    <sc-if value="{{ noData }}" hint-placeholder-val="{{ false }}">
+      <div style="margin-top:16px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:rgba(200,241,53,.06);border:1px solid rgba(200,241,53,.35);border-radius:14px;padding:12px 16px">
+        <span style="font-size:14px;line-height:1.5;color:#F6F3E7"><b style="color:#C8F135">Dados reais zerados.</b> Ainda não há dados conectados. A coleta já está ativa nas páginas; falta ligar a API do painel (veja o LEIA-ME).</span>
+        <button onClick="{{ toggleDemo }}" style="font:inherit;cursor:pointer;font-size:12.5px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:#C8F135;background:transparent;border:1px solid rgba(200,241,53,.5);padding:8px 14px;border-radius:100px">Ver demonstração</button>
+      </div>
+    </sc-if>
     <nav style="display:flex;gap:8px;overflow-x:auto;padding:16px 0;scrollbar-width:none">
       <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="6">
         <button onClick="{{ t.onClick }}" style="font:inherit;cursor:pointer;flex-shrink:0;display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:10px 16px;border-radius:14px;border:1px solid {{ t.border }};background:{{ t.bg }};color:{{ t.fg }}">
@@ -208,6 +220,33 @@ input::placeholder{color:#5f5e4f}
       </div>
     </section>
 
+    <section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:12px;margin-top:12px">
+      <div style="background:#15150D;border:1px solid rgba(246,243,231,.08);border-radius:18px;padding:18px">
+        <h2 style="font-family:'Clash Display';font-weight:600;font-size:18px;color:#F6F3E7;white-space:nowrap">Países</h2>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:14px">
+          <sc-for list="{{ countries }}" as="s" hint-placeholder-count="5">
+            <div style="display:grid;grid-template-columns:130px minmax(0,1fr) 64px;align-items:center;gap:10px;font-size:13px">
+              <span style="color:#F6F3E7;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ s.label }}</span>
+              <div style="height:8px;border-radius:100px;background:rgba(246,243,231,.06)"><div style="height:100%;width:{{ s.pct }}%;border-radius:100px;background:#C8F135"></div></div>
+              <span style="text-align:right;color:#86846F">{{ s.n }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="background:#15150D;border:1px solid rgba(246,243,231,.08);border-radius:18px;padding:18px">
+        <h2 style="font-family:'Clash Display';font-weight:600;font-size:18px;color:#F6F3E7;white-space:nowrap">Cidades</h2>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:14px">
+          <sc-for list="{{ cities }}" as="s" hint-placeholder-count="6">
+            <div style="display:grid;grid-template-columns:150px minmax(0,1fr) 64px;align-items:center;gap:10px;font-size:13px">
+              <span style="color:#F6F3E7;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ s.label }}</span>
+              <div style="height:8px;border-radius:100px;background:rgba(246,243,231,.06)"><div style="height:100%;width:{{ s.pct }}%;border-radius:100px;background:#8FB81F"></div></div>
+              <span style="text-align:right;color:#86846F">{{ s.n }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
     <section style="background:#15150D;border:1px solid rgba(246,243,231,.08);border-radius:18px;padding:18px;margin-top:12px">
       <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap">
         <h2 style="font-family:'Clash Display';font-weight:600;font-size:18px;color:#F6F3E7;white-space:nowrap">Jornadas recentes</h2>
@@ -231,7 +270,7 @@ input::placeholder{color:#5f5e4f}
       </div>
     </section>
 
-    <p style="font-size:12px;color:#5f5e4f;margin-top:20px">Dados de demonstração. Conectar ao GA4 / Clarity para dados reais.</p>
+    <p style="font-size:12px;color:#5f5e4f;margin-top:20px">Fonte: {{ sourceLabel }}</p>
   </div>
 </sc-if>
 
@@ -250,12 +289,52 @@ class Component extends DCLogic {
   // Para DESTRAVAR, troque UNLOCK_VERSION por qualquer outro valor (ex: 'v2', 'v3'...).
   MAX_TENTATIVAS = 3;
   UNLOCK_VERSION = 'v1';
+  // Fonte dos dados: 'real' busca em API_URL; 'demo' mostra dados fictícios.
+  DATA_MODE = 'real';
+  API_URL = '/api/analytics';
   // ============================================================
   SALT = 'ip-dev-2026';
   async sha(s) { const b = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(this.SALT + ':' + s)); return [...new Uint8Array(b)].map(x => x.toString(16).padStart(2, '0')).join(''); }
   readLock() { try { return JSON.parse(localStorage.getItem('ip_dev_lock') || 'null'); } catch (e) { return null; } }
   writeLock(o) { try { localStorage.setItem('ip_dev_lock', JSON.stringify(o)); } catch (e) {} }
-  state = { authed: false, email: '', pass: '', err: false, page: 'all', range: 30, fails: 0, locked: false, busy: false };
+  state = { authed: false, email: '', pass: '', err: false, page: 'all', range: 30, fails: 0, locked: false, busy: false, demo: false, raw: null, loading: false, apiErr: false };
+  async load() {
+    if (!this.state.authed || this.state.demo || this.DATA_MODE === 'demo') return;
+    this.setState({ loading: true, apiErr: false });
+    try {
+      const res = await fetch(`${this.API_URL}?page=${encodeURIComponent(this.state.page)}&range=${this.state.range}`, { credentials: 'same-origin', headers: { Accept: 'application/json' } });
+      if (!res.ok) throw new Error(res.status);
+      const raw = await res.json();
+      this.setState({ raw, loading: false });
+    } catch (e) { this.setState({ raw: null, loading: false, apiErr: true }); }
+  }
+  componentDidUpdate(pp, ps) {
+    const s = this.state;
+    if (s.authed && (!ps.authed || ps.page !== s.page || ps.range !== s.range || ps.demo !== s.demo)) this.load();
+  }
+  bars(list) { const m = Math.max(1, ...list.map(x => +x.count || 0)); return list.map(x => ({ label: x.label, n: this.fmt(+x.count || 0), pct: Math.round((+x.count || 0) / m * 100) })); }
+  fromReal(raw) {
+    const k = raw && raw.kpis || {};
+    const v = +k.visits || 0, c = +k.clicks || 0;
+    const daily = (raw && raw.daily) || [];
+    const mx = Math.max(1, ...daily.map(d => +d.visits || 0));
+    const every = Math.max(1, Math.ceil(daily.length / 10));
+    const series = daily.map((d, i) => ({ h: Math.round((+d.visits || 0) / mx * 100), c: d.visits ? Math.round((+d.clicks || 0) / d.visits * 100) : 0, label: i % every === 0 ? String(d.date || '').slice(5).split('-').reverse().join('/') : '', tip: `${d.date}: ${this.fmt(+d.visits || 0)} visitas · ${this.fmt(+d.clicks || 0)} cliques` }));
+    const mk = (label, value) => ({ label, value, delta: '', deltaColor: '#86846F' });
+    const isLinks = this.state.page === 'links';
+    const kpis = [mk('Visitas', this.fmt(v)), mk('Visitantes únicos', this.fmt(+k.unique || 0)), mk('Cliques', this.fmt(c)),
+      isLinks ? mk('Tempo médio', (+k.avgTime || 0) + 's') : mk('Checkouts iniciados', this.fmt(+k.checkouts || 0)),
+      isLinks ? mk('Taxa de clique', this.pct(c, v)) : mk('Compras', this.fmt(+k.purchases || 0))];
+    const f = (raw && raw.funnel) || []; const f0 = Math.max(1, +(f[0] && f[0].count) || 0);
+    const funnel = f.map(x => ({ label: x.label, n: this.fmt(+x.count || 0), pct: Math.max(2, Math.round((+x.count || 0) / f0 * 100)), rate: this.pct(+x.count || 0, f0) }));
+    const cl = (raw && raw.clicks) || []; const cm = Math.max(1, ...cl.map(x => +x.count || 0));
+    const clicks = cl.map(x => ({ name: x.name, area: x.area || '', n: this.fmt(+x.count || 0), ctr: this.pct(+x.count || 0, v), pct: Math.round((+x.count || 0) / cm * 100) }));
+    const dv = (raw && raw.devices) || {}; const dt = (+dv.mobile || 0) + (+dv.desktop || 0);
+    const mobilePct = dt ? Math.round((+dv.mobile || 0) / dt * 100) : 0;
+    const sd = (raw && raw.scroll) || [0, 0, 0, 0];
+    const journeys = ((raw && raw.journeys) || []).map(j => ({ time: j.time, id: j.id, src: j.source, device: j.device, city: [j.city, j.country].filter(Boolean).join(', '), steps: (j.steps || []).map((t, i, a) => ({ t, arrow: i < a.length - 1 ? '→' : '', bg: 'rgba(246,243,231,.08)', fg: '#F6F3E7' })) }));
+    return { series, kpis, funnel, funnelTitle: 'Funil', clicks, clicksTotal: this.fmt(cl.reduce((a, b) => a + (+b.count || 0), 0)), sources: this.bars((raw && raw.sources) || []), countries: this.bars((raw && raw.countries) || []), cities: this.bars((raw && raw.cities) || []), mobilePct, desktopPct: dt ? 100 - mobilePct : 0, scroll: ['25%', '50%', '75%', '100%'].map((l, i) => ({ label: l, pct: +sd[i] || 0 })), journeys, liveNow: +(raw && raw.liveNow) || 0 };
+  }
 
   async componentDidMount() {
     const lock = this.readLock();
@@ -384,7 +463,10 @@ class Component extends DCLogic {
       }),
     }));
 
-    return { series, kpis, funnel, funnelTitle, clicks, clicksTotal, sources, mobilePct, desktopPct: 100 - mobilePct, scroll, journeys, liveNow: 3 + Math.floor(r() * 9) };
+    const geo = (arr) => { const m = arr[0][1]; return arr.map(([l, w]) => ({ label: l, pct: Math.round(w / m * 100), n: this.fmt(visits * w) })); };
+    const countries = geo([['Brasil', .86], ['Portugal', .05], ['Estados Unidos', .04], ['Argentina', .02], ['Espanha', .015], ['Outros', .015]]);
+    const cities = geo([['São Paulo, BR', .31], ['Rio de Janeiro, BR', .11], ['Belo Horizonte, BR', .07], ['Campinas, BR', .05], ['Curitiba, BR', .045], ['Lisboa, PT', .03], ['Porto Alegre, BR', .03], ['Miami, US', .02]]);
+    return { countries, cities, series, kpis, funnel, funnelTitle, clicks, clicksTotal, sources, mobilePct, desktopPct: 100 - mobilePct, scroll, journeys, liveNow: 3 + Math.floor(r() * 9) };
   }
 
   renderVals() {
@@ -416,7 +498,12 @@ class Component extends DCLogic {
     if (!authed) return base;
     return {
       ...base,
-      ...this.build(),
+      ...(this.state.demo || this.DATA_MODE === 'demo' ? this.build() : this.fromReal(this.state.raw)),
+      isDemo: this.state.demo || this.DATA_MODE === 'demo',
+      noData: !(this.state.demo || this.DATA_MODE === 'demo') && !this.state.raw && !this.state.loading,
+      isLoading: this.state.loading,
+      sourceLabel: (this.state.demo || this.DATA_MODE === 'demo') ? 'dados fictícios de demonstração' : (this.state.raw ? this.API_URL + ' (dados reais)' : 'aguardando ' + this.API_URL),
+      toggleDemo: () => this.setState(s => ({ demo: !s.demo })),
       pageTitle: page === 'all' ? 'Visão geral' : cur.label,
       pageDesc: page === 'all' ? `Todas as páginas · últimos ${range} dias` : `${cur.path} · últimos ${range} dias`,
       ranges: [7, 30, 90].map(d => ({ label: d + ' dias', bg: d === range ? '#C8F135' : 'transparent', fg: d === range ? '#15130A' : '#C9C7B6', onClick: () => this.setState({ range: d }) })),
