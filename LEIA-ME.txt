@@ -28,40 +28,6 @@ PENDÊNCIAS:
   - Login /acesso-dev: bloco "CONFIG DE ACESSO" em acesso-dev/index.html (DEV_USER_HASH, DEV_PASS_HASH, UNLOCK_VERSION).
 
 
-=====================================================================
-/acesso-dev — LOGIN, SENHA E DADOS REAIS
-=====================================================================
-
-ONDE TROCAR LOGIN/SENHA: acesso-dev/index.html, bloco "CONFIG DE ACESSO" (início do <script>).
-  DEV_USER_HASH / DEV_PASS_HASH = hash SHA-256 de "ip-dev-2026:SEU_VALOR".
-  O comando para gerar o hash está comentado logo acima, é só colar no console do navegador.
-  UNLOCK_VERSION: troque ('v1' -> 'v2') para destravar após 3 tentativas erradas.
-
-DADOS: o painel agora começa ZERADO e em modo real (DATA_MODE = 'real').
-  Os números anteriores eram FICTÍCIOS (modo demonstração removido).
-  A coleta real já está ativa: cada clique das páginas novas vai para o GTM (dataLayer) e Meta Pixel.
-  No GTM, crie uma tag GA4 com acionador "Evento personalizado" = link_click / cta_click
-  (parâmetros link_id, cta_id, page). País e cidade o GA4 captura sozinho.
-
-  Para o painel exibir esses dados, crie um endpoint em API_URL (/api/analytics),
-  por ex. uma função Vercel/Netlify que consulta a GA4 Data API, recebendo ?page=&range=
-  e respondendo JSON neste formato:
-  {
-    "kpis": {"visits":0,"unique":0,"clicks":0,"checkouts":0,"purchases":0,"avgTime":0},
-    "daily": [{"date":"2026-11-10","visits":0,"clicks":0}],
-    "funnel": [{"label":"Abriram o /links","count":0}],
-    "clicks": [{"name":"Plataforma","area":"Serviços","count":0}],
-    "sources": [{"label":"Instagram","count":0}],
-    "countries": [{"label":"Brasil","count":0}],
-    "cities": [{"label":"São Paulo, BR","count":0}],
-    "devices": {"mobile":0,"desktop":0},
-    "scroll": [0,0,0,0],
-    "journeys": [{"time":"14:52","id":"#1","source":"IG bio","device":"iPhone","city":"São Paulo","country":"BR","steps":["/links","Plataforma"]}],
-    "liveNow": 0
-  }
-  Proteja esse endpoint no servidor (ele não deve responder sem autenticação).
-
-
 GOOGLE ANALYTICS (G-MLGPFP1KQP)
   Já é disparado pelo Tag Manager GTM-M5VV2GNW (tag "All Pages - Google Analytics"). Nenhuma tag GA no código.
   index.html, gym/, home/, hibrido/ NÃO precisam ser alterados.
@@ -70,3 +36,39 @@ GOOGLE ANALYTICS (G-MLGPFP1KQP)
   Configure no GTM: variáveis da camada de dados link_id, cta_id, page, value;
   acionador Evento personalizado "link_click|cta_click|purchase_personalizado" (regex);
   tag "Evento do GA4" (ID G-MLGPFP1KQP), nome {{Event}}, parâmetros link_id, cta_id, page, value. Publicar.
+
+
+=====================================================================
+PAINEL /acesso-dev — COLETA PRÓPRIA NA VERCEL (sem Google)
+=====================================================================
+Mesmo modelo do painel PHP (o site grava os acessos, o painel lê), adaptado à Vercel.
+
+ARQUIVOS:
+  track.js              -> coletor (raiz). Incluído com 1 linha em TODAS as páginas:
+                           <script src="/track.js" defer></script>
+  api/track.js          -> recebe visitas/cliques
+  api/login.js          -> login verificado no servidor (trava após 3 erros por IP)
+  api/logout.js
+  api/data.js           -> entrega os dados ao painel (só logado, cookie seguro HttpOnly)
+  api/_config.js        -> USUÁRIO, SENHA, BLOQUEIO  <<< AQUI VOCÊ ALTERA
+  api/_lib.js
+  index.html, gym/, home/, hibrido/ -> ÚNICA alteração: a linha do track.js antes do </head>.
+
+CONFIGURAR (1 vez, ~2 min):
+  Vercel > seu projeto > Storage > Create Database > Upstash for Redis (plano Free)
+  > Connect to Project (marque Production/Preview). Depois: Deployments > Redeploy.
+  Pronto. Não precisa de chave, Google Cloud, nem variáveis manuais.
+
+LOGIN: acessodev / 201520
+TROCAR: api/_config.js
+  usuario       -> novo usuário
+  senha_sha256  -> SHA-256 da nova senha (gere em https://emn178.github.io/online-tools/sha256.html)
+  destravar     -> troque 'v1' por 'v2' para destravar quem errou 3 vezes
+  Faça commit/deploy depois de alterar.
+  (Opcional) Vercel > Settings > Environment Variables: SESSION_SECRET = texto aleatório longo.
+
+O QUE O PAINEL MOSTRA (dados reais, a partir do deploy):
+  visitas, visitantes únicos, cliques com nome do botão e página, WhatsApp, início de compra,
+  compras (página obrigada), tempo médio, até onde rolaram, origem (Instagram, Google, Direto, UTMs),
+  país, cidade, celular/computador, e a jornada de cada visitante. Ao vivo = últimos 5 min.
+  Privacidade: o IP não é armazenado.

@@ -45,6 +45,9 @@ input::placeholder{color:#5f5e4f}
       <label style="display:flex;flex-direction:column;gap:6px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#86846F">Senha
         <input type="password" value="{{ pass }}" onChange="{{ setPass }}" placeholder="••••••••" style="font:inherit;font-size:15px;letter-spacing:0;font-weight:500;color:#F6F3E7;background:#0A0A07;border:1px solid rgba(246,243,231,.12);border-radius:12px;padding:13px 14px;outline:none" style-focus="border-color:#C8F135">
       </label>
+      <sc-if value="{{ apiErr }}" hint-placeholder-val="{{ false }}">
+        <p style="font-size:13px;color:#FF7A6B">{{ apiErr }}</p>
+      </sc-if>
       <sc-if value="{{ loginError }}" hint-placeholder-val="{{ false }}">
         <p style="font-size:13px;color:#FF7A6B">Usuário ou senha incorretos. Tentativas restantes: {{ attemptsLeft }}</p>
       </sc-if>
@@ -82,6 +85,9 @@ input::placeholder{color:#5f5e4f}
       <div style="margin-top:16px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:rgba(200,241,53,.06);border:1px solid rgba(200,241,53,.35);border-radius:14px;padding:12px 16px">
         <span style="font-size:14px;line-height:1.5;color:#F6F3E7"><b style="color:#C8F135">Dados reais zerados.</b> Ainda não há dados conectados. A coleta já está ativa nas páginas; os números aparecem aqui assim que a API do painel for conectada.</span>
       </div>
+    </sc-if>
+    <sc-if value="{{ apiErr }}" hint-placeholder-val="{{ false }}">
+      <div style="margin-top:16px;background:rgba(255,122,107,.08);border:1px solid rgba(255,122,107,.4);border-radius:14px;padding:12px 16px;font-size:14px;color:#F6F3E7"><b style="color:#FF7A6B">Erro ao buscar dados:</b> {{ apiErr }}</div>
     </sc-if>
     <nav style="display:flex;gap:8px;overflow-x:auto;padding:16px 0;scrollbar-width:none">
       <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="6">
@@ -249,7 +255,7 @@ input::placeholder{color:#5f5e4f}
     <section style="background:#15150D;border:1px solid rgba(246,243,231,.08);border-radius:18px;padding:18px;margin-top:12px">
       <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap">
         <h2 style="font-family:'Clash Display';font-weight:600;font-size:18px;color:#F6F3E7;white-space:nowrap">Jornadas recentes</h2>
-        <span style="font-size:12px;color:#86846F">Caminho de cada visitante, do primeiro acesso ao último clique</span>
+        <a href="https://clarity.microsoft.com" target="_blank" rel="noopener" style="font-size:12px;font-weight:700">Gravações de cada visitante no Clarity →</a>
       </div>
       <div style="display:flex;flex-direction:column;margin-top:12px">
         <sc-for list="{{ journeys }}" as="j" hint-placeholder-count="6">
@@ -277,35 +283,20 @@ input::placeholder{color:#5f5e4f}
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  // ===================== CONFIG DE ACESSO =====================
-  // Usuário e senha ficam guardados só como HASH (SHA-256), nunca em texto.
-  // Para trocar: abra o console do navegador e rode
-  //   crypto.subtle.digest('SHA-256', new TextEncoder().encode('ip-dev-2026:NOVO_VALOR')).then(b=>console.log([...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')))
-  // e cole o resultado abaixo (um para o usuário, outro para a senha).
-  DEV_USER_HASH = 'd8fbbcdc0a1fa7092d4a2fd7574b8850076883c8324257ff804e665540f1f12a';
-  DEV_PASS_HASH = 'e92836a6272be500b80e66337559445a48d252ea64640fbbdb4071a8ac59bedd';
-  // Bloqueio: após MAX_TENTATIVAS erros o painel trava neste navegador.
-  // Para DESTRAVAR, troque UNLOCK_VERSION por qualquer outro valor (ex: 'v2', 'v3'...).
-  MAX_TENTATIVAS = 3;
-  UNLOCK_VERSION = 'v1';
-  // Fonte dos dados: 'real' busca em API_URL; 'demo' mostra dados fictícios.
+  // Login, senha e bloqueio agora são verificados NO SERVIDOR: veja api/_config.js
+  API_URL = '/api/data';
   DATA_MODE = 'real';
-  API_URL = '/api/analytics';
-  // ============================================================
-  SALT = 'ip-dev-2026';
-  async sha(s) { const b = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(this.SALT + ':' + s)); return [...new Uint8Array(b)].map(x => x.toString(16).padStart(2, '0')).join(''); }
-  readLock() { try { return JSON.parse(localStorage.getItem('ip_dev_lock') || 'null'); } catch (e) { return null; } }
-  writeLock(o) { try { localStorage.setItem('ip_dev_lock', JSON.stringify(o)); } catch (e) {} }
   state = { authed: false, email: '', pass: '', err: false, page: 'all', range: 30, fails: 0, locked: false, busy: false, demo: false, raw: null, loading: false, apiErr: false };
   async load() {
     if (!this.state.authed || this.state.demo || this.DATA_MODE === 'demo') return;
     this.setState({ loading: true, apiErr: false });
     try {
       const res = await fetch(`${this.API_URL}?page=${encodeURIComponent(this.state.page)}&range=${this.state.range}`, { credentials: 'same-origin', headers: { Accept: 'application/json' } });
-      if (!res.ok) throw new Error(res.status);
+      if (res.status === 401) return this.setState({ authed: false, loading: false, raw: null });
+      if (!res.ok) { let m = res.status; try { m = (await res.json()).error || m; } catch (x) {} throw new Error(m); }
       const raw = await res.json();
       this.setState({ raw, loading: false });
-    } catch (e) { this.setState({ raw: null, loading: false, apiErr: true }); }
+    } catch (e) { this.setState({ raw: null, loading: false, apiErr: String(e.message || e) }); }
   }
   componentDidUpdate(pp, ps) {
     const s = this.state;
@@ -335,16 +326,7 @@ class Component extends DCLogic {
     return { series, kpis, funnel, funnelTitle: 'Funil', clicks, clicksTotal: this.fmt(cl.reduce((a, b) => a + (+b.count || 0), 0)), sources: this.bars((raw && raw.sources) || []), countries: this.bars((raw && raw.countries) || []), cities: this.bars((raw && raw.cities) || []), mobilePct, desktopPct: dt ? 100 - mobilePct : 0, scroll: ['25%', '50%', '75%', '100%'].map((l, i) => ({ label: l, pct: +sd[i] || 0 })), journeys, liveNow: +(raw && raw.liveNow) || 0 };
   }
 
-  async componentDidMount() {
-    const lock = this.readLock();
-    if (lock && lock.v !== this.UNLOCK_VERSION) { try { localStorage.removeItem('ip_dev_lock'); } catch (e) {} }
-    else if (lock) this.setState({ fails: lock.n || 0, locked: (lock.n || 0) >= this.MAX_TENTATIVAS });
-    try {
-      const tok = sessionStorage.getItem('ip_dev_session');
-      if (tok && tok === await this.sha(this.DEV_USER_HASH + this.DEV_PASS_HASH + this.UNLOCK_VERSION)) this.setState({ authed: true });
-    } catch (e) {}
-    try { localStorage.removeItem('ip_dev_auth'); } catch (e) {}
-  }
+  componentDidMount() { this.setState({ authed: true }); }
 
   rng(seed) { let a = seed >>> 0; return () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
   fmt(n) { return Math.round(n).toLocaleString('pt-BR'); }
@@ -353,6 +335,7 @@ class Component extends DCLogic {
   PAGES = [
     { id: 'all', label: 'Visão geral', path: 'todas as páginas', base: 0 },
     { id: 'links', label: '/links', path: 'página da bio', base: 420 },
+    { id: 'personalizado', label: 'Personalizado', path: '/treinamento-personalizado', base: 60 },
     { id: 'index', label: 'Página inicial', path: '/', base: 260 },
     { id: 'gym', label: 'GYM', path: '/gym', base: 92 },
     { id: 'home', label: 'HOME', path: '/home', base: 71 },
@@ -361,6 +344,7 @@ class Component extends DCLogic {
   CLICKS = {
     links: [['Plataforma · Quero treinar', 'Serviços', .31], ['Agendar chamada', 'Treinamento personalizado', .12], ['Copiar ALMEIDA12', 'Cupom Slyce', .09], ['Ativar desconto Slyce', 'Cupom Slyce', .06], ['Card YouTube', 'YouTube', .07], ['Copiar ALMEIDA', 'Cupom Liquidz', .05], ['Ativar desconto Liquidz', 'Cupom Liquidz', .04], ['Falar no WhatsApp', 'Rodapé', .05], ['Ícone Instagram', 'Topo', .03], ['Ícone WhatsApp', 'Topo', .03], ['Ícone YouTube', 'Topo', .02], ['Arrastou depoimentos', 'Depoimentos', .11]],
     index: [['Ver os programas', 'Hero', .22], ['Quero adquirir · HÍBRIDO', 'Planos', .11], ['Quero adquirir · GYM', 'Planos', .09], ['Quero adquirir · HOME', 'Planos', .07], ['Play no vídeo', 'Mecanismo', .14], ['FAQ · É pagamento único?', 'FAQ', .06], ['FAQ · Funciona com relógio?', 'FAQ', .04], ['Escolher meu programa', 'CTA final', .05], ['Instagram', 'Rodapé', .02]],
+    personalizado: [['Agendar minha chamada', 'Preço', .21], ['Agendar chamada', 'Barra fixa', .09], ['FAQ aberto', 'FAQ', .1]],
     gym: [['Comprar GYM', 'Hero', .34], ['Comprar GYM', 'Rodapé', .12], ['FAQ aberto', 'FAQ', .08], ['Voltar', 'Topo', .05]],
     home: [['Comprar HOME', 'Hero', .31], ['Comprar HOME', 'Rodapé', .11], ['FAQ aberto', 'FAQ', .07], ['Voltar', 'Topo', .06]],
     hibrido: [['Comprar HÍBRIDO', 'Hero', .38], ['Comprar HÍBRIDO', 'Rodapé', .13], ['FAQ aberto', 'FAQ', .07], ['Voltar', 'Topo', .04]],
@@ -478,20 +462,20 @@ class Component extends DCLogic {
       login: async e => {
         e.preventDefault();
         if (this.state.locked || this.state.busy) return;
-        this.setState({ busy: true });
-        const [u, p] = await Promise.all([this.sha(email.trim()), this.sha(pass)]);
-        await new Promise(res => setTimeout(res, 700));
-        if (u === this.DEV_USER_HASH && p === this.DEV_PASS_HASH) {
-          try { localStorage.removeItem('ip_dev_lock'); sessionStorage.setItem('ip_dev_session', await this.sha(this.DEV_USER_HASH + this.DEV_PASS_HASH + this.UNLOCK_VERSION)); } catch (x) {}
-          return this.setState({ authed: true, pass: '', email: '', err: false, fails: 0, busy: false });
-        }
-        const n = this.state.fails + 1;
-        this.writeLock({ n, v: this.UNLOCK_VERSION });
-        this.setState({ fails: n, err: true, pass: '', busy: false, locked: n >= this.MAX_TENTATIVAS });
+        this.setState({ busy: true, err: false });
+        let left = 0, ok = false, msg = '';
+        try {
+          const res = await fetch('/api/login', { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ user: email.trim(), pass }) });
+          const j = await res.json().catch(() => ({}));
+          ok = res.ok; left = j.left ?? 0; if (res.status === 500) msg = j.error;
+        } catch (x) { msg = 'Sem conexão com o servidor.'; }
+        if (ok) return this.setState({ authed: true, pass: '', email: '', busy: false, fails: 0 });
+        if (msg) return this.setState({ busy: false, pass: '', apiErr: msg, err: false });
+        this.setState({ busy: false, pass: '', err: left > 0, locked: left <= 0, fails: 3 - left });
       },
-      logout: () => { try { sessionStorage.removeItem('ip_dev_session'); } catch (x) {} this.setState({ authed: false }); },
+      logout: async () => { try { await fetch('/api/logout', { method: 'POST', credentials: 'same-origin' }); } catch (x) {} this.setState({ authed: false, raw: null }); },
       locked: this.state.locked, notLocked: !this.state.locked,
-      attemptsLeft: Math.max(0, this.MAX_TENTATIVAS - this.state.fails),
+      attemptsLeft: Math.max(0, 3 - this.state.fails),
       btnLabel: this.state.busy ? 'Verificando…' : 'Entrar',
     };
     if (!authed) return base;
@@ -499,8 +483,9 @@ class Component extends DCLogic {
       ...base,
       ...(this.state.demo || this.DATA_MODE === 'demo' ? this.build() : this.fromReal(this.state.raw)),
       isDemo: this.state.demo || this.DATA_MODE === 'demo',
-      noData: !(this.state.demo || this.DATA_MODE === 'demo') && !this.state.raw && !this.state.loading,
+      noData: !(this.state.demo || this.DATA_MODE === 'demo') && !this.state.raw && !this.state.loading && !this.state.apiErr,
       isLoading: this.state.loading,
+      apiErr: this.state.apiErr || false,
       sourceLabel: (this.state.demo || this.DATA_MODE === 'demo') ? 'dados fictícios de demonstração' : (this.state.raw ? this.API_URL + ' (dados reais)' : 'aguardando ' + this.API_URL),
       toggleDemo: () => this.setState(s => ({ demo: !s.demo })),
       pageTitle: page === 'all' ? 'Visão geral' : cur.label,
