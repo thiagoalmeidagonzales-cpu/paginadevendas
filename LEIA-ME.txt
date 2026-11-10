@@ -19,7 +19,7 @@ NÃO ALTERADOS (já existem no seu repo, as páginas novas usam):
 
 NENHUM arquivo existente foi modificado: index.html, gym/, home/, hibrido/, pixels e textos de botões continuam iguais.
 
-PIXELS: as 3 páginas públicas (links, treinamento-personalizado, obrigada-...) já têm Meta Pixel 642305334541555, Clarity xi8t27ju77, GTM-M5VV2GNW e o novo GTM-KRGLFWVL. O /acesso-dev não tem pixel (e tem noindex).
+PIXELS: as 3 páginas públicas (links, treinamento-personalizado, obrigada-...) já têm Meta Pixel 642305334541555, Clarity xi8t27ju77 e GTM-M5VV2GNW. O /acesso-dev não tem pixel (e tem noindex).
 
 PENDÊNCIAS:
   - [FEITO] Botões de compra do Treinamento Personalizado -> Stripe https://buy.stripe.com/dRmeV577j9sp2aV2DW4c800
@@ -62,8 +62,11 @@ DADOS: o painel agora começa ZERADO e em modo real (DATA_MODE = 'real').
   Proteja esse endpoint no servidor (ele não deve responder sem autenticação).
 
 
-GTM-KRGLFWVL TAMBÉM INSTALADO NAS PÁGINAS EXISTENTES:
-  index.html, gym/index.html, home/index.html, hibrido/index.html
-  Única alteração: bloco "Google Tag Manager (novo)" no <head>. Pixels, textos e botões intactos.
-  Baseado nas versões enviadas no início do projeto. Se você editou essas páginas depois, cole só o bloco
-  "Google Tag Manager (novo)" no <head> da sua versão atual em vez de substituir o arquivo.
+GOOGLE ANALYTICS (G-MLGPFP1KQP)
+  Já é disparado pelo Tag Manager GTM-M5VV2GNW (tag "All Pages - Google Analytics"). Nenhuma tag GA no código.
+  index.html, gym/, home/, hibrido/ NÃO precisam ser alterados.
+  Páginas novas enviam ao dataLayer: link_click (link_id, link_url, page), cta_click (cta_id, page, value),
+  page_view_links, page_view_personalizado, purchase_personalizado (value 499).
+  Configure no GTM: variáveis da camada de dados link_id, cta_id, page, value;
+  acionador Evento personalizado "link_click|cta_click|purchase_personalizado" (regex);
+  tag "Evento do GA4" (ID G-MLGPFP1KQP), nome {{Event}}, parâmetros link_id, cta_id, page, value. Publicar.
