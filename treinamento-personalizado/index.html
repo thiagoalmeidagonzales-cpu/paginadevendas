@@ -36,21 +36,32 @@ img{display:block;max-width:100%}
       <img src="/images/logo-white-yellow.png" alt="Intensive Performance" style="height:32px;width:auto">
       <a href="#preco" style="font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#C8F135;border:1px solid rgba(200,241,53,.4);padding:9px 14px;border-radius:100px">Ver preço</a>
     </div>
-    <div style="max-width:1080px;margin:0 auto;padding:36px 20px 56px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:36px;align-items:center">
+    <div style="max-width:1080px;margin:0 auto;padding:36px 20px 72px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:36px;align-items:center">
       <div style="display:flex;flex-direction:column;gap:18px">
         <div style="display:flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#C8F135"><span style="width:22px;height:1px;background:#C8F135"></span>Treinamento personalizado</div>
-        <h1 style="font-family:'Clash Display';font-weight:600;font-size:clamp(36px,6vw,58px);line-height:1;letter-spacing:-.01em;color:#F6F3E7;text-wrap:balance">Um treino montado <span style="color:#C8F135">100% para você.</span></h1>
-        <p style="font-size:17px;line-height:1.55;color:#C9C7B6;max-width:500px;text-wrap:pretty">Você fala direto comigo, eu entendo sua rotina, seu corpo, histórico de lesões e seu jogo, e entrego seu treino personalizado para você dentro da plataforma Intensive Performance.</p>
-        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:4px">
-          <a href="#preco" style="display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#DBF877,#C8F135 55%,#8FB81F);color:#15130A;font-weight:800;font-size:15px;letter-spacing:.03em;text-transform:uppercase;padding:17px 26px;border-radius:100px;box-shadow:0 14px 36px -12px rgba(200,241,53,.6)" style-hover="transform:translateY(-2px)">Quero meu treino
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+        <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+        <div style="position:relative">
+          <div style="position:relative;border-radius:26px;overflow:hidden;border:1px solid rgba(200,241,53,.25);aspect-ratio:4/3;box-shadow:0 40px 90px -40px rgba(0,0,0,.9)">
+            <img src="/images/almeida-chamada.png" alt="Almeida em chamada com aluno" style="width:100%;height:100%;object-fit:cover;object-position:50% 35%">
+            <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(10,10,7,.75))"></div>
+            <div style="position:absolute;left:16px;bottom:16px;right:16px;display:flex;align-items:center;gap:10px">
+              <span style="width:9px;height:9px;border-radius:50%;background:#C8F135;box-shadow:0 0 0 5px rgba(200,241,53,.2)"></span>
+              <span style="font-size:14px;color:#F6F3E7;font-weight:600">Tudo começa com uma conversa comigo</span>
+            </div>
+          </div>
         </div>
+        </sc-if>
+        <h1 style="font-family:'Clash Display';font-weight:600;font-size:clamp(24px,6.6vw,34px);line-height:1.08;letter-spacing:-.01em;color:#F6F3E7;text-wrap:balance"><span style="white-space:nowrap">Um treino <span style="color:#C8F135">100%</span></span><br><span style="white-space:nowrap"><span style="color:#C8F135">desenvolvido</span> para você!</span></h1>
+        <p style="font-size:17px;line-height:1.55;color:#C9C7B6;max-width:500px;text-wrap:pretty">Você fala direto comigo, eu entendo sua rotina, seu corpo, histórico de lesões e seu jogo, e entrego seu treino personalizado para você dentro da plataforma Intensive Performance.</p>
+        <sc-if value="{{ notMobile }}" hint-placeholder-val="{{ true }}">
         <div style="display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13.5px;color:#86846F">
           <span style="display:flex;align-items:center;gap:7px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#C8F135" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Pagamento único</span>
           <span style="display:flex;align-items:center;gap:7px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#C8F135" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>100% online</span>
           <span style="display:flex;align-items:center;gap:7px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#C8F135" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Do Brasil ao exterior</span>
         </div>
+        </sc-if>
       </div>
+      <sc-if value="{{ notMobile }}" hint-placeholder-val="{{ true }}">
       <div style="position:relative">
         <div style="position:relative;border-radius:26px;overflow:hidden;border:1px solid rgba(200,241,53,.25);aspect-ratio:4/3.4;box-shadow:0 40px 90px -40px rgba(0,0,0,.9)">
           <img src="/images/almeida-chamada.png" alt="Almeida em chamada com aluno" style="width:100%;height:100%;object-fit:cover;object-position:50% 35%">
@@ -61,11 +72,12 @@ img{display:block;max-width:100%}
           </div>
         </div>
       </div>
+      </sc-if>
     </div>
   </header>
 
   <!-- COMO FUNCIONA -->
-  <section data-screen-label="Como funciona" style="background:#F1EFE2;padding:64px 20px">
+  <section data-screen-label="Como funciona" style="background:#F1EFE2;padding:84px 20px">
     <div style="max-width:1080px;margin:0 auto">
       <div style="display:flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#5d7a0e"><span style="width:22px;height:1px;background:#5d7a0e"></span>Como funciona</div>
       <h2 style="font-family:'Clash Display';font-weight:600;font-size:clamp(28px,4.4vw,44px);line-height:1.05;color:#15150C;margin-top:14px">3 passos. Simples assim.</h2>
@@ -90,7 +102,7 @@ img{display:block;max-width:100%}
   </section>
 
   <!-- ADAPTADO -->
-  <section data-screen-label="Adaptado a você" style="padding:64px 20px;background:radial-gradient(60% 70% at 0% 100%,rgba(61,61,7,.5),transparent 60%),#0A0A07">
+  <section data-screen-label="Adaptado a você" style="padding:84px 20px;background:radial-gradient(60% 70% at 0% 100%,rgba(61,61,7,.5),transparent 60%),#0A0A07">
     <div style="max-width:1080px;margin:0 auto">
       <div style="display:flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#C8F135"><span style="width:22px;height:1px;background:#C8F135"></span>Feito para a sua realidade</div>
       <h2 style="font-family:'Clash Display';font-weight:600;font-size:clamp(28px,4.4vw,44px);line-height:1.05;color:#F6F3E7;margin-top:14px;max-width:640px;text-wrap:balance">Seu treino se adapta a você. <span style="color:#C8F135">Não o contrário.</span></h2>
@@ -116,7 +128,7 @@ img{display:block;max-width:100%}
   </section>
 
   <!-- NA PLATAFORMA -->
-  <section data-screen-label="Na plataforma" style="padding:24px 20px 64px">
+  <section data-screen-label="Na plataforma" style="padding:56px 20px 84px">
     <div style="max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:36px;align-items:center">
       <div style="display:flex;flex-direction:column;gap:16px">
         <div style="display:flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#C8F135"><span style="width:22px;height:1px;background:#C8F135"></span>Entregue na plataforma</div>
@@ -128,8 +140,8 @@ img{display:block;max-width:100%}
           <div style="display:flex;gap:12px;align-items:flex-start;font-size:15.5px;color:#C9C7B6"><svg style="flex-shrink:0;margin-top:2px" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#C8F135" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>Acesso à comunidade de tenistas</div>
         </div>
       </div>
-      <div style="display:flex;justify-content:center;position:relative">
-        <div style="position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(200,241,53,.22),transparent 65%);filter:blur(20px);top:50%;left:50%;transform:translate(-50%,-50%)"></div>
+      <div style="display:flex;justify-content:{{ phoneAlign }};position:relative">
+        <div style="position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(200,241,53,.22),transparent 65%);filter:blur(20px);top:50%;left:{{ glowLeft }};transform:translate(-50%,-50%)"></div>
         <div style="position:relative;width:250px;border-radius:38px;padding:11px;background:linear-gradient(160deg,#26260f,#0B0F0D);border:1px solid rgba(200,241,53,.25);box-shadow:0 50px 110px -30px rgba(0,0,0,.85)">
           <img src="/images/phone-5.webp" alt="Treino dentro da plataforma Intensive Performance" style="width:100%;aspect-ratio:9/18;object-fit:cover;object-position:top;border-radius:28px">
         </div>
@@ -138,7 +150,7 @@ img{display:block;max-width:100%}
   </section>
 
   <!-- COMPARATIVO -->
-  <section data-screen-label="Comparativo" style="padding:64px 20px;background:#F1EFE2">
+  <section data-screen-label="Comparativo" style="padding:84px 20px;background:#F1EFE2">
     <div style="max-width:760px;margin:0 auto">
       <div style="display:flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#5d7a0e"><span style="width:22px;height:1px;background:#5d7a0e"></span>Qual a diferença?</div>
       <h2 style="font-family:'Clash Display';font-weight:600;font-size:clamp(28px,4.4vw,42px);line-height:1.05;color:#15150C;margin-top:14px;text-wrap:balance">Plataforma × Personalizado</h2>
@@ -169,7 +181,7 @@ img{display:block;max-width:100%}
   </section>
 
   <!-- DEPOIMENTOS -->
-  <section data-screen-label="Depoimentos" style="padding:64px 0 24px">
+  <section data-screen-label="Depoimentos" style="padding:84px 0 32px">
     <div style="max-width:1080px;margin:0 auto;padding:0 20px">
       <h2 style="font-family:'Clash Display';font-weight:600;font-size:clamp(26px,4vw,38px);line-height:1.05;color:#F6F3E7">Quem treina, <span style="color:#C8F135">sente na quadra.</span></h2>
     </div>
@@ -184,7 +196,7 @@ img{display:block;max-width:100%}
   </section>
 
   <!-- PREÇO -->
-  <section id="preco" data-screen-label="Preço" style="padding:48px 20px 64px;background:radial-gradient(70% 60% at 50% 0%,rgba(61,61,7,.6),transparent 60%)">
+  <section id="preco" data-screen-label="Preço" style="padding:64px 20px 84px;background:radial-gradient(70% 60% at 50% 0%,rgba(61,61,7,.6),transparent 60%)">
     <div style="max-width:520px;margin:0 auto;position:relative;text-align:center;background:linear-gradient(165deg,rgba(21,21,13,.95),rgba(10,10,7,.9));border:1px solid rgba(200,241,53,.35);border-radius:26px;padding:36px 26px;box-shadow:0 50px 120px -40px rgba(200,241,53,.3);overflow:hidden">
       <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,#C8F135,transparent)"></div>
       <img src="/images/ip-mark.png" alt="" style="height:46px;width:auto;margin:0 auto">
@@ -251,8 +263,11 @@ img{display:block;max-width:100%}
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { open: 0, showBar: false };
+  state = { open: 0, showBar: false, isMobile: typeof window !== 'undefined' && window.innerWidth < 860 };
   componentDidMount() {
+    this.onResize = () => { const m = window.innerWidth < 860; if (m !== this.state.isMobile) this.setState({ isMobile: m }); };
+    window.addEventListener('resize', this.onResize);
+    this.onResize();
     this.onScroll = () => {
       const el = document.getElementById('preco');
       if (!el) return;
@@ -271,12 +286,12 @@ class Component extends DCLogic {
     };
     document.addEventListener('click', this.onTrack, true);
   }
-  componentWillUnmount() { document.removeEventListener('click', this.onTrack, true); window.removeEventListener('scroll', this.onScroll); }
+  componentWillUnmount() { document.removeEventListener('click', this.onTrack, true); window.removeEventListener('scroll', this.onScroll); window.removeEventListener('resize', this.onResize); }
   renderVals() {
     const o = this.state.open;
     const v = {};
     [0, 1, 2, 3].forEach(i => { v['o' + i] = o === i; v['s' + i] = o === i ? '−' : '+'; });
-    return { ...v, showBar: this.state.showBar, toggle: e => { const i = +e.currentTarget.dataset.i; this.setState(s => ({ open: s.open === i ? -1 : i })); } };
+    return { ...v, phoneAlign: this.state.isMobile ? 'flex-start' : 'center', glowLeft: this.state.isMobile ? '125px' : '50%', isMobile: this.state.isMobile, notMobile: !this.state.isMobile, showBar: this.state.showBar, toggle: e => { const i = +e.currentTarget.dataset.i; this.setState(s => ({ open: s.open === i ? -1 : i })); } };
   }
 }
 </script>
