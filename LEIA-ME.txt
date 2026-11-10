@@ -60,3 +60,10 @@ DADOS: o painel agora começa ZERADO e em modo real (DATA_MODE = 'real').
     "liveNow": 0
   }
   Proteja esse endpoint no servidor (ele não deve responder sem autenticação).
+
+
+GTM-KRGLFWVL TAMBÉM INSTALADO NAS PÁGINAS EXISTENTES:
+  index.html, gym/index.html, home/index.html, hibrido/index.html
+  Única alteração: bloco "Google Tag Manager (novo)" no <head>. Pixels, textos e botões intactos.
+  Baseado nas versões enviadas no início do projeto. Se você editou essas páginas depois, cole só o bloco
+  "Google Tag Manager (novo)" no <head> da sua versão atual em vez de substituir o arquivo.
