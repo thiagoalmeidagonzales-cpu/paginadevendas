@@ -1,0 +1,28 @@
+INTENSIVE PERFORMANCE — ARQUIVOS PARA SUBIR
+
+Copie o conteúdo desta pasta para a RAIZ do repositório (mesmo nível de index.html, gym/, home/, hibrido/).
+
+NOVOS (criar):
+  links/index.html                              -> /links
+  treinamento-personalizado/index.html          -> /treinamento-personalizado
+  obrigada-treinamentopersonalizado/index.html  -> /obrigada-treinamentopersonalizado
+  acesso-dev/index.html                         -> /acesso-dev
+  support.js                                    -> runtime das páginas novas (raiz)
+  images/hero-almeida.jpg
+  images/almeida-chamada.png
+  images/ip-mark.png
+
+NÃO ALTERADOS (já existem no seu repo, as páginas novas usam):
+  fonts/Karla.woff2, fonts/ClashDisplay-Variable.woff2
+  images/logo-white-yellow.png, images/favicon.png, images/phone-5.webp,
+  images/image-court.avif, images/depoimento-1/2/3/5.jpg
+
+NENHUM arquivo existente foi modificado: index.html, gym/, home/, hibrido/, pixels e textos de botões continuam iguais.
+
+PIXELS: as 3 páginas públicas (links, treinamento-personalizado, obrigada-...) já têm Meta Pixel 642305334541555, Clarity xi8t27ju77 e GTM-M5VV2GNW. O /acesso-dev não tem pixel (e tem noindex).
+
+PENDÊNCIAS:
+  - Botões de compra do Treinamento Personalizado abrem WhatsApp. Troque pelo link do checkout (buscar "wa.me" em treinamento-personalizado/index.html, data-track="tp_comprar_card" e "tp_comprar_sticky").
+  - No checkout, configurar a URL de sucesso: /obrigada-treinamentopersonalizado (dispara Purchase R$ 499).
+  - YouTube: confirmar https://www.youtube.com/@almeida_treinador em links/index.html.
+  - Login /acesso-dev: bloco "CONFIG DE ACESSO" em acesso-dev/index.html (DEV_USER_HASH, DEV_PASS_HASH, UNLOCK_VERSION).

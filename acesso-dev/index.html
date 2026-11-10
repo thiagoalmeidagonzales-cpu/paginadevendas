@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Acesso Dev · Analytics | Intensive Performance</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<style>
+@font-face{font-family:'Karla';font-weight:200 800;font-display:swap;src:url('/fonts/Karla.woff2') format('woff2')}
+@font-face{font-family:'Clash Display';font-weight:200 700;font-display:swap;src:url('/fonts/ClashDisplay-Variable.woff2') format('woff2')}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0A0A07;color:#C9C7B6;font-family:"Karla",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#C8F135;text-decoration:none}
+a:hover{color:#DBF877}
+input::placeholder{color:#5f5e4f}
+</style>
+</helmet>
+<div style="min-height:100vh;background:radial-gradient(70% 40% at 50% 0%,rgba(61,61,7,.45),transparent 70%),#0A0A07">
+
+<sc-if value="{{ loggedOut }}" hint-placeholder-val="{{ true }}">
+  <div data-screen-label="Login" style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px">
+    <form onSubmit="{{ login }}" style="width:100%;max-width:380px;background:#15150D;border:1px solid rgba(200,241,53,.2);border-radius:24px;padding:32px 26px;display:flex;flex-direction:column;gap:16px;box-shadow:0 40px 90px -40px rgba(0,0,0,.9)">
+      <img src="/images/logo-white-yellow.png" alt="Intensive Performance" style="height:34px;width:auto;align-self:flex-start">
+      <div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#C8F135"><span style="width:18px;height:1px;background:#C8F135"></span>Acesso dev</div>
+        <h1 style="font-family:'Clash Display';font-weight:600;font-size:30px;line-height:1.05;color:#F6F3E7;margin-top:10px">Painel de acessos</h1>
+        <p style="font-size:14px;color:#86846F;margin-top:6px">Área restrita. Entre para ver os dados.</p>
+      </div>
+      <sc-if value="{{ locked }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;gap:12px;align-items:flex-start;background:rgba(255,122,107,.08);border:1px solid rgba(255,122,107,.4);border-radius:14px;padding:14px 16px">
+          <svg style="flex-shrink:0;margin-top:1px" width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="5" y="10" width="14" height="10" rx="2" stroke="#FF7A6B" stroke-width="2"></rect><path d="M8 10V7a4 4 0 018 0v3" stroke="#FF7A6B" stroke-width="2"></path></svg>
+          <p style="font-size:14px;line-height:1.5;color:#F6F3E7">Acesso bloqueado após 3 tentativas incorretas. Fale com o administrador.</p>
+        </div>
+      </sc-if>
+      <sc-if value="{{ notLocked }}" hint-placeholder-val="{{ true }}">
+      <label style="display:flex;flex-direction:column;gap:6px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#86846F">Usuário
+        <input type="text" autocomplete="username" value="{{ email }}" onChange="{{ setEmail }}" placeholder="usuário" style="font:inherit;font-size:15px;text-transform:none;letter-spacing:0;font-weight:500;color:#F6F3E7;background:#0A0A07;border:1px solid rgba(246,243,231,.12);border-radius:12px;padding:13px 14px;outline:none" style-focus="border-color:#C8F135">
+      </label>
+      <label style="display:flex;flex-direction:column;gap:6px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#86846F">Senha
+        <input type="password" value="{{ pass }}" onChange="{{ setPass }}" placeholder="••••••••" style="font:inherit;font-size:15px;letter-spacing:0;font-weight:500;color:#F6F3E7;background:#0A0A07;border:1px solid rgba(246,243,231,.12);border-radius:12px;padding:13px 14px;outline:none" style-focus="border-color:#C8F135">
+      </label>
+      <sc-if value="{{ loginError }}" hint-placeholder-val="{{ false }}">
+        <p style="font-size:13px;color:#FF7A6B">Usuário ou senha incorretos. Tentativas restantes: {{ attemptsLeft }}</p>
+      </sc-if>
+      <button type="submit" style="font:inherit;cursor:pointer;border:none;margin-top:4px;background:linear-gradient(135deg,#DBF877,#C8F135 55%,#8FB81F);color:#15130A;font-weight:800;font-size:15px;letter-spacing:.04em;text-transform:uppercase;padding:15px;border-radius:100px">{{ btnLabel }}</button>
+      </sc-if>
+    </form>
+  </div>
+</sc-if>
+
+<sc-if value="{{ loggedIn }}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="Dashboard" style="max-width:1200px;margin:0 auto;padding:0 20px 60px">
+
+    <header style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:22px 0 18px;border-bottom:1px solid rgba(246,243,231,.08)">
+      <div style="display:flex;align-items:center;gap:14px">
+        <img src="/images/logo-white-yellow.png" alt="Intensive Performance" style="height:30px;width:auto">
+        <span style="font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#0A0A07;background:#C8F135;padding:5px 9px;border-radius:7px">Analytics</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+        <div style="display:flex;gap:4px;background:#15150D;border:1px solid rgba(246,243,231,.08);border-radius:100px;padding:4px">
+          <sc-for list="{{ ranges }}" as="r" hint-placeholder-count="3">
+            <button onClick="{{ r.onClick }}" style="font:inherit;cursor:pointer;border:none;font-size:13px;font-weight:700;padding:8px 14px;border-radius:100px;background:{{ r.bg }};color:{{ r.fg }}">{{ r.label }}</button>
+          </sc-for>
+        </div>
+        <button onClick="{{ logout }}" style="font:inherit;cursor:pointer;font-size:13px;font-weight:700;color:#C9C7B6;background:transparent;border:1px solid rgba(246,243,231,.12);padding:9px 14px;border-radius:100px" style-hover="border-color:#C8F135;color:#C8F135">Sair</button>
+      </div>
+    </header>
+
+    <nav style="display:flex;gap:8px;overflow-x:auto;padding:16px 0;scrollbar-width:none">
+      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="6">
+        <button onClick="{{ t.onClick }}" style="font:inherit;cursor:pointer;flex-shrink:0;display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:10px 16px;border-radius:14px;border:1px solid {{ t.border }};background:{{ t.bg }};color:{{ t.fg }}">
+          <span style="font-family:'Clash Display';font-weight:600;font-size:15px">{{ t.label }}</span>
+          <span style="font-size:11.5px;opacity:.75">{{ t.sub }}</span>
+        </button>
+      </sc-for>
+    </nav>
+
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:8px 0 18px">
+      <div>
+        <h1 style="font-family:'Clash Display';font-weight:600;font-size:clamp(26px,4vw,36px);line-height:1.05;color:#F6F3E7">{{ pageTitle }}</h1>
+        <p style="font-size:14px;color:#86846F;margin-top:6px">{{ pageDesc }}</p>
+      </div>
+      <span style="display:inline-flex;align-items:center;gap:7px;font-size:12px;color:#86846F;white-space:nowrap"><span style="width:7px;height:7px;border-radius:50%;background:#C8F135;box-shadow:0 0 0 4px rgba(200,241,53,.15)"></span>{{ liveNow }} pessoas agora</span>
+    </div>
+
+    <section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));gap:12px">
+      <sc-for list="{{ kpis }}" as="k" hint-placeholder-count="5">
+        <div style="background:#15150D;border:1px solid rgba(246,243,231,.08);border-radius:18px;padding:16px 18px;display:flex;flex-direction:column;gap:6px">
+          <span style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#86846F">{{ k.label }}</span>
+          <b style="font-family:'Clash Display';font-weight:600;font-size:28px;line-height:1;color:#F6F3E7">{{ k.value }}</b>
+          <span style="font-size:12.5px;font-weight:700;color:{{ k.deltaColor }}">{{ k.delta }} <span style="font-weight:500;color:#5f5e4f">vs. período anterior</span></span>
+        </div>
+      </sc-for>
+    </section>
+
+    <section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,520px),1fr));gap:12px;margin-top:12px">
+      <div style="background:#15150D;border:1px solid rgba(246,243,231,.08);border-radius:18px;padding:18px">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+          <h2 style="font-family:'Clash Display';font-weight:600;font-size:18px;color:#F6F3E7;white-space:nowrap">Acessos e cliques</h2>
+          <div style="display:flex;gap:14px;font-size:12px;color:#86846F">
+            <span style="display:flex;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:3px;background:rgba(246,243,231,.18)"></span>Visitas</span>
+            <span style="display:flex;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:3px;background:#C8F135"></span>Cliques</span>
+          </div>
+        </div>
+        <div style="display:flex;align-items:flex-end;gap:4px;height:180px;margin-top:18px;border-bottom:1px solid rgba(246,243,231,.08)">
+          <sc-for list="{{ series }}" as="b" hint-placeholder-count="14">
+            <div title="{{ b.tip }}" style="flex:1;min-width:0;height:100%;display:flex;align-items:flex-end;position:relative">
+              <div style="width:100%;height:{{ b.h }}%;background:rgba(246,243,231,.14);border-radius:4px 4px 0 0;position:relative">
+                <div style="position:absolute;left:0;right:0;bottom:0;height:{{ b.c }}%;background:#C8F135;border-radius:4px 4px 0 0"></div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;gap:4px;margin-top:8px">
+          <sc-for list="{{ series }}" as="b" hint-placeholder-count="14">
+            <span style="flex:1;min-width:0;text-align:center;font-size:10.5px;color:#5f5e4f;white-space:nowrap;overflow:hidden">{{ b.label }}</span>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="background:#15150D;border:1px solid rgba(246,243,231,.08);border-radius:18px;padding:18px">
+        <h2 style="font-family:'Clash Display';font-weight:600;font-size:18px;color:#F6F3E7;white-space:nowrap">{{ funnelTitle }}</h2>
+        <div style="display:flex;flex-direction:column;gap:12px;margin-top:16px">
+          <sc-for list="{{ funnel }}" as="f" hint-placeholder-count="5">
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <div style="display:flex;justify-content:space-between;gap:10px;font-size:13.5px">
+                <span style="color:#F6F3E7;font-weight:600">{{ f.label }}</span>
+                <span style="color:#86846F"><b style="color:#F6F3E7;font-family:'Clash Display';font-weight:600">{{ f.n }}</b> · {{ f.rate }}</span>
+              </div>
+              <div style="height:10px;border-radius:100px;background:rgba(246,243,231,.06);overflow:hidden">
+                <div style="height:100%;width:{{ f.pct }}%;border-radius:100px;background:linear-gradient(90deg,#8FB81F,#C8F135)"></div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,520px),1fr));gap:12px;margin-top:12px">
+      <div style="background:#15150D;border:1px solid rgba(246,243,231,.08);border-radius:18px;padding:18px">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap">
+          <h2 style="font-family:'Clash Display';font-weight:600;font-size:18px;color:#F6F3E7;white-space:nowrap">Onde clicaram</h2>
+          <span style="font-size:12px;color:#86846F;white-space:nowrap">{{ clicksTotal }} cliques</span>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:0 14px;margin-top:14px;font-size:13.5px">
+          <span style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#5f5e4f;padding-bottom:8px">Elemento</span>
+          <span style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#5f5e4f;padding-bottom:8px;text-align:right">Cliques</span>
+          <span style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#5f5e4f;padding-bottom:8px;text-align:right">CTR</span>
+          <sc-for list="{{ clicks }}" as="c" hint-placeholder-count="8">
+            <div style="padding:9px 0;border-top:1px solid rgba(246,243,231,.06);display:flex;flex-direction:column;gap:6px;min-width:0">
+              <span style="color:#F6F3E7;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ c.name }} <span style="color:#5f5e4f;font-weight:500">· {{ c.area }}</span></span>
+              <div style="height:5px;border-radius:100px;background:rgba(246,243,231,.06)"><div style="height:100%;width:{{ c.pct }}%;border-radius:100px;background:#C8F135"></div></div>
+            </div>
+            <span style="padding:9px 0;border-top:1px solid rgba(246,243,231,.06);text-align:right;font-family:'Clash Display';font-weight:600;color:#F6F3E7">{{ c.n }}</span>
+            <span style="padding:9px 0;border-top:1px solid rgba(246,243,231,.06);text-align:right;color:#86846F">{{ c.ctr }}</span>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="display:grid;gap:12px;align-content:start">
+        <div style="background:#15150D;border:1px solid rgba(246,243,231,.08);border-radius:18px;padding:18px">
+          <h2 style="font-family:'Clash Display';font-weight:600;font-size:18px;color:#F6F3E7;white-space:nowrap">De onde vieram</h2>
+          <div style="display:flex;flex-direction:column;gap:10px;margin-top:14px">
+            <sc-for list="{{ sources }}" as="s" hint-placeholder-count="5">
+              <div style="display:grid;grid-template-columns:120px minmax(0,1fr) 64px;align-items:center;gap:10px;font-size:13px">
+                <span style="color:#F6F3E7;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ s.label }}</span>
+                <div style="height:8px;border-radius:100px;background:rgba(246,243,231,.06)"><div style="height:100%;width:{{ s.pct }}%;border-radius:100px;background:#C8F135"></div></div>
+                <span style="text-align:right;color:#86846F">{{ s.n }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:12px">
+          <div style="background:#15150D;border:1px solid rgba(246,243,231,.08);border-radius:18px;padding:18px">
+            <h2 style="font-family:'Clash Display';font-weight:600;font-size:18px;color:#F6F3E7;white-space:nowrap">Dispositivo</h2>
+            <div style="display:flex;height:12px;border-radius:100px;overflow:hidden;margin-top:16px">
+              <div style="width:{{ mobilePct }}%;background:#C8F135"></div>
+              <div style="flex:1;background:rgba(246,243,231,.2)"></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;margin-top:10px;font-size:13px">
+              <span><b style="color:#F6F3E7;font-family:'Clash Display';font-weight:600">{{ mobilePct }}%</b> celular</span>
+              <span><b style="color:#F6F3E7;font-family:'Clash Display';font-weight:600">{{ desktopPct }}%</b> computador</span>
+            </div>
+          </div>
+          <div style="background:#15150D;border:1px solid rgba(246,243,231,.08);border-radius:18px;padding:18px">
+            <h2 style="font-family:'Clash Display';font-weight:600;font-size:18px;color:#F6F3E7;white-space:nowrap">Até onde rolaram</h2>
+            <div style="display:flex;align-items:flex-end;gap:8px;height:70px;margin-top:14px">
+              <sc-for list="{{ scroll }}" as="d" hint-placeholder-count="4">
+                <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;height:100%;justify-content:flex-end">
+                  <span style="font-size:11px;color:#F6F3E7;font-weight:700">{{ d.pct }}%</span>
+                  <div style="width:100%;height:{{ d.pct }}%;background:rgba(200,241,53,.75);border-radius:4px 4px 0 0"></div>
+                </div>
+              </sc-for>
+            </div>
+            <div style="display:flex;gap:8px;margin-top:6px">
+              <sc-for list="{{ scroll }}" as="d" hint-placeholder-count="4">
+                <span style="flex:1;text-align:center;font-size:10.5px;color:#5f5e4f">{{ d.label }}</span>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="background:#15150D;border:1px solid rgba(246,243,231,.08);border-radius:18px;padding:18px;margin-top:12px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap">
+        <h2 style="font-family:'Clash Display';font-weight:600;font-size:18px;color:#F6F3E7;white-space:nowrap">Jornadas recentes</h2>
+        <span style="font-size:12px;color:#86846F">Caminho de cada visitante, do primeiro acesso ao último clique</span>
+      </div>
+      <div style="display:flex;flex-direction:column;margin-top:12px">
+        <sc-for list="{{ journeys }}" as="j" hint-placeholder-count="6">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),auto));align-items:center;gap:10px 16px;padding:12px 0;border-top:1px solid rgba(246,243,231,.06)">
+            <div style="display:flex;flex-direction:column;gap:2px;min-width:150px">
+              <span style="font-size:13px;color:#F6F3E7;font-weight:700">{{ j.time }} · {{ j.id }}</span>
+              <span style="font-size:12px;color:#86846F">{{ j.src }} · {{ j.device }} · {{ j.city }}</span>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px">
+              <sc-for list="{{ j.steps }}" as="s" hint-placeholder-count="4">
+                <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:5px 9px;border-radius:8px;background:{{ s.bg }};color:{{ s.fg }}">{{ s.t }}</span>
+                <span style="font-size:11px;color:#5f5e4f">{{ s.arrow }}</span>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <p style="font-size:12px;color:#5f5e4f;margin-top:20px">Dados de demonstração. Conectar ao GA4 / Clarity para dados reais.</p>
+  </div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  // ===================== CONFIG DE ACESSO =====================
+  // Usuário e senha ficam guardados só como HASH (SHA-256), nunca em texto.
+  // Para trocar: abra o console do navegador e rode
+  //   crypto.subtle.digest('SHA-256', new TextEncoder().encode('ip-dev-2026:NOVO_VALOR')).then(b=>console.log([...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')))
+  // e cole o resultado abaixo (um para o usuário, outro para a senha).
+  DEV_USER_HASH = 'd8fbbcdc0a1fa7092d4a2fd7574b8850076883c8324257ff804e665540f1f12a';
+  DEV_PASS_HASH = 'e92836a6272be500b80e66337559445a48d252ea64640fbbdb4071a8ac59bedd';
+  // Bloqueio: após MAX_TENTATIVAS erros o painel trava neste navegador.
+  // Para DESTRAVAR, troque UNLOCK_VERSION por qualquer outro valor (ex: 'v2', 'v3'...).
+  MAX_TENTATIVAS = 3;
+  UNLOCK_VERSION = 'v1';
+  // ============================================================
+  SALT = 'ip-dev-2026';
+  async sha(s) { const b = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(this.SALT + ':' + s)); return [...new Uint8Array(b)].map(x => x.toString(16).padStart(2, '0')).join(''); }
+  readLock() { try { return JSON.parse(localStorage.getItem('ip_dev_lock') || 'null'); } catch (e) { return null; } }
+  writeLock(o) { try { localStorage.setItem('ip_dev_lock', JSON.stringify(o)); } catch (e) {} }
+  state = { authed: false, email: '', pass: '', err: false, page: 'all', range: 30, fails: 0, locked: false, busy: false };
+
+  async componentDidMount() {
+    const lock = this.readLock();
+    if (lock && lock.v !== this.UNLOCK_VERSION) { try { localStorage.removeItem('ip_dev_lock'); } catch (e) {} }
+    else if (lock) this.setState({ fails: lock.n || 0, locked: (lock.n || 0) >= this.MAX_TENTATIVAS });
+    try {
+      const tok = sessionStorage.getItem('ip_dev_session');
+      if (tok && tok === await this.sha(this.DEV_USER_HASH + this.DEV_PASS_HASH + this.UNLOCK_VERSION)) this.setState({ authed: true });
+    } catch (e) {}
+    try { localStorage.removeItem('ip_dev_auth'); } catch (e) {}
+  }
+
+  rng(seed) { let a = seed >>> 0; return () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+  fmt(n) { return Math.round(n).toLocaleString('pt-BR'); }
+  pct(a, b) { return b ? (a / b * 100).toFixed(1).replace('.', ',') + '%' : '—'; }
+
+  PAGES = [
+    { id: 'all', label: 'Visão geral', path: 'todas as páginas', base: 0 },
+    { id: 'links', label: '/links', path: 'página da bio', base: 420 },
+    { id: 'index', label: 'Página inicial', path: '/', base: 260 },
+    { id: 'gym', label: 'GYM', path: '/gym', base: 92 },
+    { id: 'home', label: 'HOME', path: '/home', base: 71 },
+    { id: 'hibrido', label: 'HÍBRIDO', path: '/hibrido', base: 84 },
+  ];
+  CLICKS = {
+    links: [['Plataforma · Quero treinar', 'Serviços', .31], ['Agendar chamada', 'Treinamento personalizado', .12], ['Copiar ALMEIDA12', 'Cupom Slyce', .09], ['Ativar desconto Slyce', 'Cupom Slyce', .06], ['Card YouTube', 'YouTube', .07], ['Copiar ALMEIDA', 'Cupom Liquidz', .05], ['Ativar desconto Liquidz', 'Cupom Liquidz', .04], ['Falar no WhatsApp', 'Rodapé', .05], ['Ícone Instagram', 'Topo', .03], ['Ícone WhatsApp', 'Topo', .03], ['Ícone YouTube', 'Topo', .02], ['Arrastou depoimentos', 'Depoimentos', .11]],
+    index: [['Ver os programas', 'Hero', .22], ['Quero adquirir · HÍBRIDO', 'Planos', .11], ['Quero adquirir · GYM', 'Planos', .09], ['Quero adquirir · HOME', 'Planos', .07], ['Play no vídeo', 'Mecanismo', .14], ['FAQ · É pagamento único?', 'FAQ', .06], ['FAQ · Funciona com relógio?', 'FAQ', .04], ['Escolher meu programa', 'CTA final', .05], ['Instagram', 'Rodapé', .02]],
+    gym: [['Comprar GYM', 'Hero', .34], ['Comprar GYM', 'Rodapé', .12], ['FAQ aberto', 'FAQ', .08], ['Voltar', 'Topo', .05]],
+    home: [['Comprar HOME', 'Hero', .31], ['Comprar HOME', 'Rodapé', .11], ['FAQ aberto', 'FAQ', .07], ['Voltar', 'Topo', .06]],
+    hibrido: [['Comprar HÍBRIDO', 'Hero', .38], ['Comprar HÍBRIDO', 'Rodapé', .13], ['FAQ aberto', 'FAQ', .07], ['Voltar', 'Topo', .04]],
+  };
+
+  build() {
+    const { page, range } = this.state;
+    const pages = this.PAGES.filter(p => p.id !== 'all');
+    const sel = page === 'all' ? pages : pages.filter(p => p.id === page);
+    const r = this.rng(range * 31 + page.length * 7 + page.charCodeAt(0));
+    const daily = Array.from({ length: range }, (_, i) => {
+      const v = sel.reduce((s, p) => s + p.base * (0.72 + 0.56 * r()) * (1 + i / range * 0.18), 0);
+      return { v, c: v * (0.38 + 0.12 * r()) };
+    });
+    const bucket = range === 90 ? 7 : range === 30 ? 2 : 1;
+    const bars = [];
+    for (let i = 0; i < daily.length; i += bucket) {
+      const s = daily.slice(i, i + bucket);
+      bars.push({ v: s.reduce((a, b) => a + b.v, 0), c: s.reduce((a, b) => a + b.c, 0), i });
+    }
+    const max = Math.max(...bars.map(b => b.v));
+    const today = new Date(2026, 10, 10);
+    const series = bars.map((b, k) => {
+      const d = new Date(today); d.setDate(d.getDate() - (range - 1 - b.i));
+      const lab = range === 7 ? ['dom','seg','ter','qua','qui','sex','sáb'][d.getDay()] : `${d.getDate()}/${d.getMonth() + 1}`;
+      const every = range === 7 ? 1 : range === 30 ? 3 : 2;
+      return { h: Math.round(b.v / max * 100), c: Math.round(b.c / b.v * 100), label: k % every === 0 ? lab : '', tip: `${lab}: ${this.fmt(b.v)} visitas · ${this.fmt(b.c)} cliques` };
+    });
+    const visits = daily.reduce((a, b) => a + b.v, 0);
+    const clicksN = daily.reduce((a, b) => a + b.c, 0);
+    const uniq = visits * 0.71;
+    const checkout = page === 'links' ? 0 : visits * (page === 'all' ? 0.045 : page === 'index' ? 0.06 : 0.19);
+    const buys = checkout * 0.34;
+    const avgT = page === 'links' ? 38 : page === 'index' ? 112 : 74;
+    const dlt = () => { const x = (r() * 30 - 8); return { s: (x >= 0 ? '+' : '') + x.toFixed(0) + '%', up: x >= 0 }; };
+    const mk = (label, value) => { const d = dlt(); return { label, value, delta: d.s, deltaColor: d.up ? '#C8F135' : '#FF7A6B' }; };
+    const kpis = [
+      mk('Visitas', this.fmt(visits)),
+      mk('Visitantes únicos', this.fmt(uniq)),
+      mk('Cliques', this.fmt(clicksN)),
+      page === 'links' ? mk('Tempo médio', `${avgT}s`) : mk('Checkouts iniciados', this.fmt(checkout)),
+      page === 'links' ? mk('Taxa de clique', this.pct(clicksN, visits)) : mk('Compras', this.fmt(buys)),
+    ];
+
+    const linksV = visits * (page === 'all' ? 0.45 : 1);
+    let funnel, funnelTitle;
+    if (page === 'links') {
+      funnelTitle = 'Funil da bio';
+      const steps = [['Abriram o /links', linksV], ['Clicaram em algo', linksV * .62], ['Foram para a plataforma', linksV * .31], ['Chamaram no WhatsApp', linksV * .08], ['Usaram um cupom', linksV * .14]];
+      funnel = steps.map(([l, n]) => ({ label: l, n: this.fmt(n), pct: Math.round(n / linksV * 100), rate: this.pct(n, linksV) }));
+    } else if (page === 'all') {
+      funnelTitle = 'Funil completo';
+      const steps = [['Bio → /links', linksV], ['/links → site', linksV * .34], ['Viram uma página de programa', linksV * .21], ['Iniciaram checkout', checkout], ['Compraram', buys]];
+      funnel = steps.map(([l, n]) => ({ label: l, n: this.fmt(n), pct: Math.max(2, Math.round(n / linksV * 100)), rate: this.pct(n, linksV) }));
+    } else {
+      funnelTitle = 'Funil da página';
+      const steps = [['Abriram a página', visits], ['Rolaram até os planos/oferta', visits * .58], ['Clicaram em comprar', visits * (page === 'index' ? .2 : .42)], ['Iniciaram checkout', checkout], ['Compraram', buys]];
+      funnel = steps.map(([l, n]) => ({ label: l, n: this.fmt(n), pct: Math.max(2, Math.round(n / visits * 100)), rate: this.pct(n, visits) }));
+    }
+
+    let list;
+    if (page === 'all') list = Object.entries(this.CLICKS).flatMap(([pid, arr]) => arr.slice(0, 3).map(([n, a, w]) => [n, (this.PAGES.find(p => p.id === pid).label) + ' · ' + a, w * (this.PAGES.find(p => p.id === pid).base / 420)]));
+    else list = this.CLICKS[page];
+    const raw = list.map(([n, a, w]) => ({ name: n, area: a, v: visits * w * (0.85 + r() * 0.3) / (page === 'all' ? 2.2 : 1) }));
+    raw.sort((a, b) => b.v - a.v);
+    const cmax = raw[0].v;
+    const clicks = raw.map(c => ({ name: c.name, area: c.area, n: this.fmt(c.v), ctr: this.pct(c.v, visits), pct: Math.round(c.v / cmax * 100) }));
+    const clicksTotal = this.fmt(raw.reduce((a, b) => a + b.v, 0));
+
+    const srcW = page === 'links' || page === 'all'
+      ? [['Instagram · bio', .56], ['Instagram · stories', .18], ['YouTube', .1], ['WhatsApp', .06], ['Direto', .1]]
+      : [['/links (bio)', .44], ['Instagram', .18], ['Anúncios Meta', .2], ['Google', .08], ['Direto', .1]];
+    const smax = srcW[0][1];
+    const sources = srcW.map(([l, w]) => ({ label: l, pct: Math.round(w / smax * 100), n: this.fmt(visits * w) }));
+
+    const mobilePct = page === 'index' ? 79 : page === 'all' ? 85 : page === 'links' ? 91 : 82;
+    const sd = page === 'links' ? [96, 78, 61, 44] : page === 'index' ? [88, 62, 41, 23] : [90, 66, 47, 30];
+    const scroll = ['25%', '50%', '75%', '100%'].map((l, i) => ({ label: l, pct: sd[i] }));
+
+    const J = [
+      ['14:52', 'IG bio', 'iPhone', 'São Paulo', ['/links', 'Plataforma', '/', 'HÍBRIDO', 'Checkout', 'Compra ✓']],
+      ['14:47', 'IG stories', 'Android', 'Campinas', ['/links', 'Copiou ALMEIDA12', 'Slyce ↗']],
+      ['14:31', 'IG bio', 'iPhone', 'Lisboa', ['/links', 'Agendar chamada', 'WhatsApp ↗']],
+      ['14:18', 'YouTube', 'Desktop', 'Rio de Janeiro', ['/', 'Play no vídeo', 'FAQ', 'GYM', 'Checkout']],
+      ['13:59', 'IG bio', 'iPhone', 'Belo Horizonte', ['/links', 'Card YouTube', 'YouTube ↗']],
+      ['13:40', 'Anúncio Meta', 'Android', 'Curitiba', ['/', 'Ver os programas', 'HOME', 'Saiu']],
+      ['13:22', 'IG bio', 'iPhone', 'Miami', ['/links', 'Plataforma', '/', 'GYM', 'Checkout', 'Compra ✓']],
+      ['13:05', 'WhatsApp', 'iPhone', 'Porto Alegre', ['/links', 'Ativar Liquidz', 'Liquidz ↗']],
+    ];
+    const pmap = { links: '/links', index: '/', gym: 'GYM', home: 'HOME', hibrido: 'HÍBRIDO' };
+    const filtered = page === 'all' ? J : J.filter(j => j[4].includes(pmap[page]));
+    const journeys = (filtered.length ? filtered : J.slice(0, 3)).map((j, idx) => ({
+      time: j[0], id: '#' + (4821 - idx * 13), src: j[1], device: j[2], city: j[3],
+      steps: j[4].map((t, i, arr) => {
+        const isPage = t.startsWith('/') || ['GYM', 'HOME', 'HÍBRIDO'].includes(t);
+        const win = t.includes('✓');
+        const out = t === 'Saiu';
+        return { t, arrow: i < arr.length - 1 ? '→' : '', bg: win ? '#C8F135' : isPage ? 'rgba(246,243,231,.08)' : out ? 'rgba(255,122,107,.12)' : 'rgba(200,241,53,.1)', fg: win ? '#15130A' : out ? '#FF7A6B' : isPage ? '#F6F3E7' : '#C8F135' };
+      }),
+    }));
+
+    return { series, kpis, funnel, funnelTitle, clicks, clicksTotal, sources, mobilePct, desktopPct: 100 - mobilePct, scroll, journeys, liveNow: 3 + Math.floor(r() * 9) };
+  }
+
+  renderVals() {
+    const { authed, email, pass, err, page, range } = this.state;
+    const cur = this.PAGES.find(p => p.id === page);
+    const base = {
+      loggedIn: authed, loggedOut: !authed, loginError: err, email, pass,
+      setEmail: e => this.setState({ email: e.target.value, err: false }),
+      setPass: e => this.setState({ pass: e.target.value, err: false }),
+      login: async e => {
+        e.preventDefault();
+        if (this.state.locked || this.state.busy) return;
+        this.setState({ busy: true });
+        const [u, p] = await Promise.all([this.sha(email.trim()), this.sha(pass)]);
+        await new Promise(res => setTimeout(res, 700));
+        if (u === this.DEV_USER_HASH && p === this.DEV_PASS_HASH) {
+          try { localStorage.removeItem('ip_dev_lock'); sessionStorage.setItem('ip_dev_session', await this.sha(this.DEV_USER_HASH + this.DEV_PASS_HASH + this.UNLOCK_VERSION)); } catch (x) {}
+          return this.setState({ authed: true, pass: '', email: '', err: false, fails: 0, busy: false });
+        }
+        const n = this.state.fails + 1;
+        this.writeLock({ n, v: this.UNLOCK_VERSION });
+        this.setState({ fails: n, err: true, pass: '', busy: false, locked: n >= this.MAX_TENTATIVAS });
+      },
+      logout: () => { try { sessionStorage.removeItem('ip_dev_session'); } catch (x) {} this.setState({ authed: false }); },
+      locked: this.state.locked, notLocked: !this.state.locked,
+      attemptsLeft: Math.max(0, this.MAX_TENTATIVAS - this.state.fails),
+      btnLabel: this.state.busy ? 'Verificando…' : 'Entrar',
+    };
+    if (!authed) return base;
+    return {
+      ...base,
+      ...this.build(),
+      pageTitle: page === 'all' ? 'Visão geral' : cur.label,
+      pageDesc: page === 'all' ? `Todas as páginas · últimos ${range} dias` : `${cur.path} · últimos ${range} dias`,
+      ranges: [7, 30, 90].map(d => ({ label: d + ' dias', bg: d === range ? '#C8F135' : 'transparent', fg: d === range ? '#15130A' : '#C9C7B6', onClick: () => this.setState({ range: d }) })),
+      tabs: this.PAGES.map(p => ({ label: p.label, sub: p.path, bg: p.id === page ? 'rgba(200,241,53,.1)' : '#15150D', border: p.id === page ? '#C8F135' : 'rgba(246,243,231,.08)', fg: p.id === page ? '#C8F135' : '#C9C7B6', onClick: () => this.setState({ page: p.id }) })),
+    };
+  }
+}
+</script>
+</body>
+</html>
