@@ -287,20 +287,17 @@ class Component extends DCLogic {
   API_URL = '/api/data';
   DATA_MODE = 'real';
   state = { authed: false, email: '', pass: '', err: false, page: 'all', range: 30, fails: 0, locked: false, busy: false, demo: false, raw: null, loading: false, apiErr: false };
-  async load() {
-    if (!this.state.authed || this.state.demo || this.DATA_MODE === 'demo') return;
+  async load(page, range) {
+    page = page || this.state.page; range = range || this.state.range;
+    if (this.state.demo || this.DATA_MODE === 'demo') return;
     this.setState({ loading: true, apiErr: false });
     try {
-      const res = await fetch(`${this.API_URL}?page=${encodeURIComponent(this.state.page)}&range=${this.state.range}`, { credentials: 'same-origin', headers: { Accept: 'application/json' } });
+      const res = await fetch(`${this.API_URL}?page=${encodeURIComponent(page)}&range=${range}&_=${Date.now()}`, { credentials: 'same-origin', headers: { Accept: 'application/json' } });
       if (res.status === 401) return this.setState({ authed: false, loading: false, raw: null });
       if (!res.ok) { let m = res.status; try { m = (await res.json()).error || m; } catch (x) {} throw new Error(m); }
       const raw = await res.json();
       this.setState({ raw, loading: false });
     } catch (e) { this.setState({ raw: null, loading: false, apiErr: String(e.message || e) }); }
-  }
-  componentDidUpdate(pp, ps) {
-    const s = this.state;
-    if (s.authed && (!ps.authed || ps.page !== s.page || ps.range !== s.range || ps.demo !== s.demo)) this.load();
   }
   bars(list) { const m = Math.max(1, ...list.map(x => +x.count || 0)); return list.map(x => ({ label: x.label, n: this.fmt(+x.count || 0), pct: Math.round((+x.count || 0) / m * 100) })); }
   fromReal(raw) {
@@ -326,7 +323,12 @@ class Component extends DCLogic {
     return { series, kpis, funnel, funnelTitle: 'Funil', clicks, clicksTotal: this.fmt(cl.reduce((a, b) => a + (+b.count || 0), 0)), sources: this.bars((raw && raw.sources) || []), countries: this.bars((raw && raw.countries) || []), cities: this.bars((raw && raw.cities) || []), mobilePct, desktopPct: dt ? 100 - mobilePct : 0, scroll: ['25%', '50%', '75%', '100%'].map((l, i) => ({ label: l, pct: +sd[i] || 0 })), journeys, liveNow: +(raw && raw.liveNow) || 0 };
   }
 
-  componentDidMount() { this.setState({ authed: true }); }
+  componentDidMount() {
+    this.setState({ authed: true });
+    this.load();
+    this.timer = setInterval(() => { if (this.state.authed && !this.state.loading && document.visibilityState === 'visible') this.load(); }, 20000);
+  }
+  componentWillUnmount() { clearInterval(this.timer); }
 
   rng(seed) { let a = seed >>> 0; return () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
   fmt(n) { return Math.round(n).toLocaleString('pt-BR'); }
@@ -469,7 +471,7 @@ class Component extends DCLogic {
           const j = await res.json().catch(() => ({}));
           ok = res.ok; left = j.left ?? 0; if (res.status === 500) msg = j.error;
         } catch (x) { msg = 'Sem conexão com o servidor.'; }
-        if (ok) return this.setState({ authed: true, pass: '', email: '', busy: false, fails: 0 });
+        if (ok) { this.setState({ authed: true, pass: '', email: '', busy: false, fails: 0, apiErr: false }); this.load(); return; }
         if (msg) return this.setState({ busy: false, pass: '', apiErr: msg, err: false });
         this.setState({ busy: false, pass: '', err: left > 0, locked: left <= 0, fails: 3 - left });
       },
@@ -490,8 +492,8 @@ class Component extends DCLogic {
       toggleDemo: () => this.setState(s => ({ demo: !s.demo })),
       pageTitle: page === 'all' ? 'Visão geral' : cur.label,
       pageDesc: page === 'all' ? `Todas as páginas · últimos ${range} dias` : `${cur.path} · últimos ${range} dias`,
-      ranges: [7, 30, 90].map(d => ({ label: d + ' dias', bg: d === range ? '#C8F135' : 'transparent', fg: d === range ? '#15130A' : '#C9C7B6', onClick: () => this.setState({ range: d }) })),
-      tabs: this.PAGES.map(p => ({ label: p.label, sub: p.path, bg: p.id === page ? 'rgba(200,241,53,.1)' : '#15150D', border: p.id === page ? '#C8F135' : 'rgba(246,243,231,.08)', fg: p.id === page ? '#C8F135' : '#C9C7B6', onClick: () => this.setState({ page: p.id }) })),
+      ranges: [7, 30, 90].map(d => ({ label: d + ' dias', bg: d === range ? '#C8F135' : 'transparent', fg: d === range ? '#15130A' : '#C9C7B6', onClick: () => { this.setState({ range: d }); this.load(this.state.page, d); } })),
+      tabs: this.PAGES.map(p => ({ label: p.label, sub: p.path, bg: p.id === page ? 'rgba(200,241,53,.1)' : '#15150D', border: p.id === page ? '#C8F135' : 'rgba(246,243,231,.08)', fg: p.id === page ? '#C8F135' : '#C9C7B6', onClick: () => { this.setState({ page: p.id }); this.load(p.id, this.state.range); } })),
     };
   }
 }
