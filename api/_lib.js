@@ -1,8 +1,8 @@
 const crypto = require('crypto');
 const cfg = require('./_config');
 
-const URL_ = process.env.UPSTASH_REDIS_REST_URL || process.env.KV_REST_API_URL;
-const TOKEN = process.env.UPSTASH_REDIS_REST_TOKEN || process.env.KV_REST_API_TOKEN;
+const URL_ = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL || process.env.STORAGE_REST_API_URL || process.env.STORAGE_KV_REST_API_URL;
+const TOKEN = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN || process.env.STORAGE_REST_API_TOKEN || process.env.STORAGE_KV_REST_API_TOKEN;
 
 async function redis(cmds) {
   if (!URL_ || !TOKEN) throw new Error('Banco não conectado: crie o Upstash Redis em Vercel > Storage e conecte ao projeto.');
